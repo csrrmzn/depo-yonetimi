@@ -8,10 +8,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     $username=$_POST["username"];
     $password=md5($_POST["pass"]);
 
-    $login=$db->prepare("SELECT * FROM users");
-    $login->execute();
-    $userLogin=$login->fetch(PDO::FETCH_ASSOC);
-
     $databaseUser=$userLogin["user_name"];
     $databasePass=$userLogin["user_password"];
     

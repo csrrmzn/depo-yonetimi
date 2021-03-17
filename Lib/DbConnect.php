@@ -2,8 +2,7 @@
 
 try {
 
-	$db=new PDO("mysql:host=localhost;dbname=vivense;charset=utf8",'root','');
-	$db->exec("SET NAME UT8");
+	$db=new PDO("mysql:host=localhost;dbname=vivense;charset=UTF8",'root','');
 	$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 	//echo "veritabanı bağlantısı başarılı";
 }
