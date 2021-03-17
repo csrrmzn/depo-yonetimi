@@ -1,12 +1,10 @@
 <?php
-include "header.php";
-
-$productsor = $db->prepare("SELECT product.*, category.* 
-FROM product INNER JOIN category 
-ON product.category_id=category.category_id
-");
-$productsor->execute();
-
+include "Header.php";
+if (isset($_SESSION["LogedIn"])==true) {
+    go("Product.php");
+}else {
+    go("Index.php");
+}
 ?>
 
 <!-- Ürün Listesini Göster -->
@@ -34,42 +32,25 @@ $productsor->execute();
   </thead>
 
   <tbody>
-
-    <?php
-    $say = 1;
-    while ($productcek = $productsor->fetch(PDO::FETCH_ASSOC)) {
-    ?>
-
       <tr>
-        <th scope="row"><?= $say++; ?></th>
-        <td><?php echo $productcek['product_uniqid'] ?></td>
-        <td><?php echo $productcek['product_name'] ?></td>
-        <td><?php echo $productcek['product_price'] ?></td>
-        <td><?php echo $productcek['product_description'] ?></td>
-        <td colspan="2"><?php
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td colspan="2">
 
             // metin kısaltması yapıldı
-            $content = $productcek['product_content'];
-            $uzunluk = strlen($content);
-            $limit = 250;
-            if ($uzunluk > $limit) {
-              $content = substr($content, 0, $limit) . " <b>devamı var...</b>";
-              echo $content;
-            }else {
-              echo $content;
-            }
 
-            ?></td>
-        <td><?php echo $productcek['category_name'] ?></td>
+           </td>
+        <td></td>
         <td style="width: 12%;">
-        <a href="productsedit.php?product_id=<?php echo $productcek['product_id']; ?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
-        <a href="lib/user-operations.php?product_id=<?php echo $productcek['product_id']; ?>&productdelete=ok"><button class="btn btn-danger btn-sm">Sil</button></a>
+        <a href=""><button class="btn btn-primary btn-sm">Düzenle</button></a>
+        <a href=""><button class="btn btn-danger btn-sm">Sil</button></a>
         </td>
         
 
       </tr>
-
-    <?php } ?>
 
   </tbody>
 </table>
@@ -77,6 +58,6 @@ $productsor->execute();
 
 <?php
 
-include "footer.php";
+include "Footer.php";
 
 ?>

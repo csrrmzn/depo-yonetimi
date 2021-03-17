@@ -1,7 +1,10 @@
 <?php
-
-include "header.php";
-
+include "Header.php";
+if (isset($_SESSION["LogedIn"])==true) {
+    go("CategoryAdd.php");
+}else {
+    go("Index.php");
+}
 ?>
 
 
@@ -36,7 +39,5 @@ include "header.php";
 
 
 <?php
-
-include "footer.php";
-
+include "Footer.php";
 ?>

@@ -1,3 +1,9 @@
+<?php
+
+include "Lib/DbConnect.php";
+include "Function.php";
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -40,6 +46,7 @@
                         <li class="nav-item">
                             <a href="Export.php"><button class="btn btn-secondary btn-sm">Dışa Aktar</button></a>
                             <a href="Import.php"><button class="btn btn-secondary btn-sm">İçe Aktar</button></a>
+                            <a href="Logout.php"><button class="btn btn-danger btn-sm">Güvenli Çıkış Yap</button></a>
                         </li>
                     </ul>
                 </div>

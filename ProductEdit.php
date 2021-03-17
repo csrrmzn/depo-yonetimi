@@ -1,14 +1,10 @@
 <?php
-
-include "header.php";
-
-$productsor = $db->prepare("SELECT * FROM product where product_id=:id");
-$productsor->execute([
-    'id' => $_GET['product_id']
-]);
-
-$productcek = $productsor->fetch(PDO::FETCH_ASSOC);
-
+include "Header.php";
+if (isset($_SESSION["LogedIn"])==true) {
+    go("ProductEdit.php");
+}else {
+    go("Index.php");
+}
 ?>
 
 
@@ -25,21 +21,7 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
             <div class="custom-select">
                 <select name="category_id" class='select2'>
 
-                    <?php
-
-                    $kategorisor = $db->prepare("SELECT * FROM category order by category_id ASC");
-                    $kategorisor->execute();
-
-                    while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <option <?php
-                                if ($kategoricek['category_id'] == $productcek['category_id']) {
-                                    echo "selected";
-                                }
-                                ?> value="<?php echo $kategoricek['category_id'] ?>"><?php echo $kategoricek['category_name'] ?>
-                        </option>
-
-                    <?php } ?>
+                    
 
                 </select>
             </div>
@@ -51,7 +33,7 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
             <label for="exampleInputEmail1">UniqId</label>
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="product_uniqid" value="<?php echo $productcek['product_uniqid'] ?>">
+            <input type="text" class="form-control" name="product_uniqid" value="">
         </div>
     </div>
 
@@ -60,7 +42,7 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
             <label for="exampleInputEmail1">Name</label>
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="product_name" value="<?php echo $productcek['product_name'] ?>">
+            <input type="text" class="form-control" name="product_name" value="">
         </div>
     </div>
 
@@ -69,7 +51,7 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
             <label for="exampleInputEmail1">Price</label>
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="product_price" value="<?php echo $productcek['product_price'] ?>">
+            <input type="text" class="form-control" name="product_price" value="">
         </div>
     </div>
 
@@ -78,7 +60,7 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
             <label for="exampleInputEmail1">Description</label>
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="product_description" value="<?php echo $productcek['product_description'] ?>">
+            <input type="text" class="form-control" name="product_description" value="">
         </div>
     </div>
 
@@ -88,7 +70,7 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
         </div>
         <div class="col-md-6">
 
-            <textarea class="ckeditor" id="editor1" name="product_content"><?php echo $productcek['product_content'] ?></textarea>
+            <textarea class="ckeditor" id="editor1" name="product_content"></textarea>
         </div>
     </div>
 
@@ -119,7 +101,7 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
     </div>
     </div>
 
-    <input type="hidden" name="product_id" value="<?php echo $productcek['product_id'] ?>">
+    <input type="hidden" name="product_id" value="">
 
     <div align="right" class="col-md-6">
         <button type="submit" class="btn btn-primary" name="productedit">Kaydet</button>
@@ -129,7 +111,5 @@ $productcek = $productsor->fetch(PDO::FETCH_ASSOC);
 
 
 <?php
-
-include "footer.php";
-
+include "Footer.php";
 ?>

@@ -1,7 +1,10 @@
 <?php
-
-include "header.php";
-
+include "Header.php";
+if (isset($_SESSION["LogedIn"])==true) {
+    go("ProductAdd.php");
+}else {
+    go("Index.php");
+}
 ?>
 
 
@@ -20,16 +23,7 @@ include "header.php";
             <div class="custom-select">
                 <select name="category_id" class='select2'>
 
-                    <?php
-
-                    $kategorisor = $db->prepare("SELECT * FROM category order by category_id ASC");
-                    $kategorisor->execute();
-
-                    while ($kategoricek = $kategorisor->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                        <option value="<?php echo $kategoricek['category_id'] ?>"><?php echo $kategoricek['category_name'] ?></option>
-
-                    <?php } ?>
+                    
 
                 </select>
             </div>
@@ -116,7 +110,5 @@ include "header.php";
 
 
 <?php
-
-include "footer.php";
-
+include "Footer.php";
 ?>
