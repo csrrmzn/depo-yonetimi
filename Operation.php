@@ -3,13 +3,13 @@ include "db/Database.class.php";
 include "Function.php";
 $db=new \vivense\db\Database();
 //Giriş İşlemi
-if ($_SERVER["REQUEST_METHOD"]=="POST") {
+if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) ) {
     $username=$_POST["username"];
     $password=$_POST["pass"];
 
-    $myQuery=$db->getRow("SELECT username,user_password FROM users WHERE username=?",array($username));
-        $databaseUser=$myQuery->username;
-        $databasePass=$myQuery->user_password;
+    $myQuery=$db->getRow("SELECT UserName,UserPassword FROM users WHERE UserName=?",array($username));
+        $databaseUser=$myQuery->UserName;
+        $databasePass=$myQuery->UserPassword;
 
 
     if (empty($username) && empty($password)) {
@@ -40,7 +40,28 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     go("Home.php",3);
 }
 
+//Yeni Kayıt İşlemi
+if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
+{
+    $username=$_POST["name"];
+    $lastname=$_POST["lastname"];
+    $password=md5(md5(md5(sha1(sha1(sha1($_POST["pass"]))))));
+    $email=$_POST["email"];
+    $birtday=$_POST["birtday"];
 
+    if (empty($username) && empty($lastname) && empty($password) && empty($email) && empty($birtday) ) {
+        echo "Lütfen Tüm Bilgileri Doldurunuz.";
+        comeBack(4);
+    }else {
+        $addUser=$db->Insert('INSERT INTO users SET
+                            UserName=?,
+                            UserLastname=?,
+                            UserPassword=?,
+                            UserEmail=?,
+                            UserBirtday=?',array($username,$lastname,$password,$email,$birtday));
+    }
+
+}
 
 
 

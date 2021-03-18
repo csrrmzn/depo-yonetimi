@@ -41,13 +41,15 @@
                         <div class="mb-2 d-grid gap-2">
                         <button type="submit" name="login" class="btn btn-success btn-sm btn-block">Giriş Yap</button>
                         </div>
-                        <div class="-mb-2">
-                        <button type="submit" name="newlogin" class="btn btn-primary btn-sm btn-block">Yeni Kayıt Oluştur</button>
+                        </form>
+                        <div class="mb-2">
+                            <a href="NewRegistration.php"><button type="submit" name="newlogin" class="btn btn-primary btn-sm btn-block">Yeni Kayıt Oluştur</button>
+</a>
                         </div>
                         <div class="-mb-1">
                             <a href="NewPassword.php">Şifremi Unuttum!</a>
                         </div>
-                    </form>
+                    
             </div>
             <div class="col-md-4">
             </div>

@@ -104,19 +104,6 @@ class Database
             return $this->Update($query,$params);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function __destruct()
     {
         //Bağlantıyı Kapatma
