@@ -36,13 +36,13 @@ if (isset($_SESSION["LogedIn"])==true)
                         <td><? echo $items->UserEmail; ?></td>
                         <td><? echo $items->UserBirtday; ?></td>
                         <td><? echo $items->registration_time; ?></td>
-                        <? } ?>
                         <td>
                             <a href="Operation.php?UserId=<?=$items->UserId;?>">
                                 <button type="submit" name="deletemyaccount" class="btn btn-danger btn-sm">Hesabımı Sil</button>
                             </a>
                         </td>
                     </tr>
+                    <? } ?>
                 </tbody>
             </table>
         </div>

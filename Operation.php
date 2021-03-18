@@ -40,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) )
 }//Giriş İşlemi Bitti
 
 
-
 //Yeni Kayıt İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
 {
