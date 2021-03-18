@@ -94,6 +94,27 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]))
 
 }//Şifre Güncelleme İşlemi Bitti
 
+//Hesap Silme İşlemi
+if (isset($_GET["deletemyaccount"]))
+{
+    $userıd=strip_tags($_GET["UserId;"]);
+
+    if (empty($userıd)) {
+        echo "HATA!";
+        comeBack(4);
+    }else {
+        $deleteMyAccount=$db->Delete('DELETE FROM users WHERE
+                            UserId=?',
+                            array($userıd));
+        if ($deleteMyAccount==true) {
+            echo $delete="Hesabınız Silindi Giriş Ekranına Yönlendiriliyorsunuz"."<br>";
+        }else {
+            echo $undelete="Hesabınız Silinemedi Giriş Ekranına Yönlendiriliyorsunuz ";
+            comeBack(4);
+        }
+    }
+
+}//Hesap Silme İşlemi Bitti
 
 
 
