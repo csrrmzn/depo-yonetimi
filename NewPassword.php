@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayıt Oluştur</title>
+    <title>Şifre Değiştirme</title>
 
     <!--Bootstrap 4.6 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center">
-                    <h2>Yeni Kayıt</h2>
+                    <h2>Şifremi Unuttum</h2>
                 </div>
             </div>
         </div>
@@ -35,26 +35,13 @@
                         <input type="text" required="required" name="name"  class="form-control" id="name" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
-                        <label for="lastname" class="form-label required">Soyadınız</label>
-                        <input type="text" required="required" name="lastname" class="form-control" id="lastname">
+                        <label for="newpassword" class="form-label required">Yeni Şifreniz</label>
+                        <input type="password" required="required" name="newpassword" class="form-control" id="newpassword">
                     </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label required">Şifreniz</label>
-                        <input type="password" required="required" name="pass" class="form-control" id="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label required">Email Adresiniz</label>
-                        <input type="email" required="required" name="email" class="form-control" id="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="birtday" class="form-label required">Doğum Tarihiniz</label>
-                        <input type="text" required="required" name="birtday" class="form-control" id="birtday">
-                    </div>
-                    
-                    <button type="submit" name="newregistration" class="btn btn-success btn-sm btn-block mb-2 ">Kayıt Ol</button>
+                    <button type="submit" name="addnewpassword" class="btn btn-success btn-sm btn-block mb-2 ">Şifremi Değiştir</button>
                 </form>
                     <div>
-                        <a href="Index.php" ><button type="submit" class="btn btn-primary btn-sm btn-block">Zaten Üyeyim</button></a>
+                        <a href="Index.php" ><button type="submit" class="btn btn-primary btn-sm btn-block">Giriş Ekranı</button></a>
                     </div>
             </div>
             <div class="col-md-4">
