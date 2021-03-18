@@ -21,7 +21,7 @@ function comeBack($time=0)
     }
 }
 
-function login()
+/*function login()
 {
     if ($_SESSION['LogedIn']==true &&
     $_SESSION['LoginIp']==$_SERVER['REMOTE_ADDR'] &&
@@ -39,5 +39,4 @@ function login()
                     go("Logout.php");
                 }
     }
-}
-?>
+}*/

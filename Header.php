@@ -1,6 +1,6 @@
 <?php
 
-include "Lib/DbConnect.php";
+include "db/Database.class.php";
 include "Function.php";
 
 ?>

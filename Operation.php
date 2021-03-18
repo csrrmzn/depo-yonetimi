@@ -1,16 +1,17 @@
 <?php
-include "Lib/DbConnect.php";
+include "db/Database.class.php";
 include "Function.php";
-
+$db=new \vivense\db\Database();
 //Giriş İşlemi
-
 if ($_SERVER["REQUEST_METHOD"]=="POST") {
     $username=$_POST["username"];
-    $password=md5($_POST["pass"]);
+    $password=$_POST["pass"];
 
-    $databaseUser=$userLogin["user_name"];
-    $databasePass=$userLogin["user_password"];
-    
+    $myQuery=$db->getRow("SELECT username,user_password FROM users WHERE username=?",array($username));
+        $databaseUser=$myQuery->username;
+        $databasePass=$myQuery->user_password;
+
+
     if (empty($username) && empty($password)) {
          echo "Lütfen Kullanıcı Adınızı ve Şifrenizi Boş Bırakmayınız.";
          comeBack(4);
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
 
 }else {
-    ?><h3>Lütfen Giriş Yapınız</h3><?
+    ?><h3>Lütfen Giriş Yapınız</h3><?php
     echo "Bu Sayfayı Görüntüleme Yetkiniz Bulunmamaktadır."."Yönlendiriliyorsunuz..."."<br>";
     go("Home.php",3);
 }
@@ -63,5 +64,3 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
 // Json Dosyası Yükleme
 
-
-?>
