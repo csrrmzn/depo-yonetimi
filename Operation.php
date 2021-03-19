@@ -2,7 +2,12 @@
 include "db/Database.class.php";
 include "Function.php";
 $db=new \vivense\db\Database();
-
+if (isset($_SESSION["LogedIn"])==true)
+{
+    $username=$_SESSION["username"];
+}else {
+    go("Index.php");
+}
 //Yeni Kayıt İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
 {

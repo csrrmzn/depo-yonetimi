@@ -1,12 +1,6 @@
 <?php
 include "Header.php";
-if (isset($_SESSION["LogedIn"])==true) {
-    go("CategoryAdd.php");
-}else {
-    go("Index.php");
-}
 ?>
-
 
 <h3>Kategori Ekleme</h3>
 <hr>
