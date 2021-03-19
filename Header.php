@@ -1,8 +1,12 @@
 <?php
-
 include "db/Database.class.php";
 include "Function.php";
-
+if (isset($_SESSION["LogedIn"])==true)
+{
+    $username=$_SESSION["username"];
+}else {
+    go("Index.php");
+}
 ?>
 <!doctype html>
 <html lang="en">

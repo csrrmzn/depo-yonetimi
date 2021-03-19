@@ -34,7 +34,7 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-4">
-                    <form method="post" action="Operation.php" >
+                    <form method="post" action="Do-Login.php" >
                         <div class="mb-3">
                             <label class="form-label">Kullanıcı Adınız</label>
                             <input type="text" name="username" class="form-control">

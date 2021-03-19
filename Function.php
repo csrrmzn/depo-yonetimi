@@ -21,6 +21,18 @@ function comeBack($time=0)
     }
 }
 
+function ımpossible()
+{
+    if ($_SESSION["LogedIn"]=true)
+    {
+        echo "Bu Sayfayı Görüntüleme Yetkiniz Bulunmamaktadır";
+        go("Index.php",3);
+    }else {
+        echo "Yetkisiz Giriş Denemesi Başarısız";
+        go("Index.php",1);
+    }
+}
+
 /*function reCaptcha()
 {
     $fields =

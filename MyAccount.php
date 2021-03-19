@@ -38,7 +38,10 @@ if (isset($_SESSION["LogedIn"])==true)
                         <td><? echo $items->registration_time; ?></td>
                         <td>
                             <a href="Operation.php?UserId=<?=$items->UserId;?>">
-                                <button type="submit" name="deletemyaccount" class="btn btn-danger btn-sm">Hesabımı Sil</button>
+                                <button type="submit" class="btn btn-danger btn-sm">Hesabımı Sil</button>
+                            </a>
+                            <a href="NewPassword.php">
+                                <button type="submit" class="btn btn-primary btn-sm">Şifremi Değiştir</button>
                             </a>
                         </td>
                     </tr>

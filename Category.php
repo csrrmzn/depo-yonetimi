@@ -1,10 +1,6 @@
 <?php
 include "Header.php";
-if (isset($_SESSION["LogedIn"])==true) {
-    go("Category.php");
-}else {
-    go("Index.php");
-}
+$db=new \vivense\db\Database();
 ?>
 
 <!-- Kategori Listesini Göster -->
@@ -13,7 +9,7 @@ if (isset($_SESSION["LogedIn"])==true) {
 <table class="table table-bordered">
     <thead>
     <div class="mb-2 ">
-    <a href="categoryadd.php"><button class="btn btn-success btn">Yeni Kategori Ekle</button></a>
+    <a href="categoryadd.php"><button class="btn btn-success btn-sm">Yeni Kategori Ekle</button></a>
     </div>
     </thead>
     <thead class="thead-light">
@@ -25,16 +21,22 @@ if (isset($_SESSION["LogedIn"])==true) {
             <th scope="col">İşlemler</th>
         </tr>
     </thead>
-
+        <?php
+          $myQuery=$db->getRows("SELECT * FROM category");
+            foreach ($myQuery as $items) { ?>
     <tbody>
             <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td>></td>
-                <td align="middle" ><a href=""><button class="btn btn-danger btn">Sil</button></a></td>
+                <th scope="row"><?=$items->CategoryId?></th>
+                <td><?=$items->CategoryUniqid?></td>
+                <td><?=$items->CategoryName;?></td>
+                <td align="middle" >
+                <a href="Operation.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
+                <a href="Operation.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                </td>
 
             </tr>
     </tbody>
+     <? } ?>
 </table>
 
 
