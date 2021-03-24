@@ -2,7 +2,9 @@
 include "Header.php";
 include "SideBar.php";
 $db=new \vivense\db\Database();
+
 ?>
+
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -29,12 +31,16 @@ $db=new \vivense\db\Database();
             <div class="small-box bg-info">
             <?php 
               $recordsProdcut=$db->getColumn("SELECT COUNT(ProductId) FROM product");
-              $recordsCategory=$db->getColumn("SELECT COUNT(CategoryName) FROM category");
+              $recordsCategory=$db->getColumn("SELECT COUNT(CategoryId) FROM category");
+              $recordsPPP=$db->getColumn("SELECT SUM(ProductPurchasePrice) FROM product");
+              $recordsPSP=$db->getColumn("SELECT SUM(ProductSellPrice) FROM product");
+              $sum=$recordsPSP-$recordsPPP;
+              
             ?>
               <div class="inner">
                 <h3><?=$recordsProdcut;?></h3>
 
-                <p>Ürün</p>
+                <h4>Ürün</h4>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -47,7 +53,7 @@ $db=new \vivense\db\Database();
               <div class="inner">
                 <h3><?=$recordsCategory;?></h3>
 
-                <p>Kategori</p>
+                <h4>Kategori</h4>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -58,12 +64,12 @@ $db=new \vivense\db\Database();
           <div class="col-lg-3 col-6">
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>10</h3>
+                <h3><?=$recordsPPP;?>₺</h3>
 
-                <p>Toplam Maliyet</p>
+                <h4>Toplam Maliyet</h4>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="ion ion-pie-graph"></i>
               </div>
               <a href="IncomeExpense.php" class="small-box-footer">Detaylı Gör <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -71,9 +77,9 @@ $db=new \vivense\db\Database();
           <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?=$sum;?>₺</h3>
 
-                <p>Toplam Kâr</p>
+                <h4>Toplam Kâr/Zarar</h4>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
         }
     }
 
-}//Yeni Kayıt İşlemi Bitti
+}
 
 //Şifre Güncelleme İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && isset($_POST["newpasswordclone"]) && $_POST["newpassword"]==$_POST["newpasswordclone"])
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && iss
         }
     }
 
-}//Şifre Güncelleme İşlemi Bitti
+}
 
 //Hesap Silme İşlemi
 if (isset($_GET['UserId']))
@@ -79,22 +79,19 @@ if (isset($_GET['UserId']))
             comeBack(1);
         }
 
-}//Hesap Silme İşlemi Bitti
+}
 
-
-
-
-
-//Ürün Güncelleme
-
-
-// Ürün Ekleme
-
-
+$deger=155;
 //Ürün Silme
-
-
-// Kategori Ekleme
-
-
-// Json Dosyası Yükleme
+if ($_GET["ProductId"]) {
+    $productId=$_GET["ProductId"];
+    $deleteProduct=$db->Delete("DELETE FROM product WHERE ProductId=?",array($productId));
+    if ($deleteProduct==true) {
+        $_SESSION["deleteproductconfirm"]=true;
+        $_SESSION["productmessage"]=$productId;
+        go("Product.php");
+    }else {
+        $_SESSION["producterrormessage"]=$productId;
+        go("Product.php");
+    }
+}

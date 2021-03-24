@@ -40,10 +40,11 @@ $db=new \vivense\db\Database();
                   </tr>
                   </thead>
                     <?php
-                    $myQuery=$db->getRows("SELECT * FROM category");
-                      foreach ($myQuery as $items) {
+                      $myQuery=$db->getRows("SELECT * FROM category");
+                        foreach ($myQuery as $items) {
                         $number=$items->CategoryId;
-                                            $recordsCategory=$db->getColumn("SELECT COUNT(CategoryName) FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE product.CategoryId=?",array($number));
+                        
+                      $recordsCategory=$db->getColumn("SELECT COUNT(CategoryName) FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE product.CategoryId=?",array($number));
                     ?>
                   <tbody>
                   <tr>
@@ -52,7 +53,7 @@ $db=new \vivense\db\Database();
                   <td><?=$items->CategoryName;?></td>
                   <td><?=$recordsCategory;?></td>
                   <td align="middle" >
-                  <a href="Operation.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
+                  <a href="CategoryEdit.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
                   <a href="Operation.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                   </td>
                   </tr>

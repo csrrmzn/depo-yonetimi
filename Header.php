@@ -41,6 +41,8 @@ go("Login.php");
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <script src="src/jquery.table2excel.js"></script>
+
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

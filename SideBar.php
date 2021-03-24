@@ -42,7 +42,7 @@ accessBlock($value1,$value2,"Home.php");
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="Index.php" class="nav-link">
+            <a href="Index.php" class="nav-link ">
               <i class="far fa-circle nav-icon"></i>
               <p>
                 Anasayfa
@@ -50,7 +50,7 @@ accessBlock($value1,$value2,"Home.php");
             </a>
           </li>
           <li class="nav-item">
-            <a href="Product.php" class="nav-link">
+            <a href="Product.php" class="nav-link ">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Ürünler
@@ -69,7 +69,7 @@ accessBlock($value1,$value2,"Home.php");
             <a href="IncomeExpense.php" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
-                Cari Hesaplar
+                Fiyat Yönetimi
               </p>
             </a>
           </li>

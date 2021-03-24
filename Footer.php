@@ -66,5 +66,22 @@ accessBlock($value1,$value2,"Home.php");
 <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src='excelexportjs.js'></script>
+<script>
+$('#cmd').click(function () {
+     var options = {
+            pagesplit: true
+      };
+      var pdf = new jsPDF('p', 'pt', 'a4');
+         pdf.addHTML($("#content"), 5, 5, options, function () {
+               pdf.save('ProductList.pdf');
+       });
+});
+</script>
+
 </body>
 </html>

@@ -20,6 +20,19 @@ $db=new \vivense\db\Database();
         </div>
       </div>
     </div>
+    <div class="col-md-12 text-center">
+      <h3>
+      <?php
+        if (@$_SESSION["deleteproductconfirm"]==true) {?>
+            <div class="alert alert-success">
+            <?=$_SESSION["productmessage"]." "."Numaralı Ürün Silindi";
+              unset($_SESSION["deleteproductconfirm"]);
+              unset($_SESSION["productmessage"]);
+            ?>
+            </div>
+      <?}?>
+      </h3>
+    </div>
    <section class="content">
       <div class="container-fluid">
           <div class="row">
@@ -34,14 +47,11 @@ $db=new \vivense\db\Database();
                         <select name="category" class="form-control">
                           <?php
                             $myQuery0=$db->getRows("SELECT * FROM category ");
-                                foreach ($myQuery0 as $items0) {                   
+                                          foreach ($myQuery0 as $items0) {                   
                           ?>
                           <option value="<?=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
-                          
-                          <? } ?>
-                          
+                          <? } ?> 
                         </select>
-                        
                     </li>
                     <li class="nav-item">
                       <button class="btn btn-primary" type="submit" name="categorysend">Listele</button>
@@ -57,7 +67,9 @@ $db=new \vivense\db\Database();
                   <tr>
                     <th>Ürün ID</th>
                     <th>Ürün Adı</th>
-                    <th>Fiyat</th>
+                    <th>Ürün Alış Fiyatı</th>
+                    <th>Ürün Satış Fiyatı</th>
+                    <th>Ürün Açıklama</th>
                     <th>Kategori Adı</th>
                     <th>İşlemler</th>
                   </tr>
@@ -68,19 +80,24 @@ $db=new \vivense\db\Database();
                       }else {
                             $categoryId=$_POST["category"];
                       }
-                      $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE product.CategoryId=?",array($categoryId));
-                        foreach ($myQuery as $items) {
-                          
+                      $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON
+                                    product.CategoryId=category.CategoryId WHERE
+                                    product.CategoryId=?",array(
+                                    $categoryId));
+                                    
+                                    foreach ($myQuery as $items) {     
                   ?>
                   <tbody>
                   <tr>
                     <td><?=$items->ProductUniqid;?></td>
                     <td><?=$items->ProductName;?></td>
-                    <td><?=$items->ProductPrice;?></td>
+                    <td><?=$items->ProductPurchasePrice;?></td>
+                    <td><?=$items->ProductSellPrice;?></td>
+                    <td><?=$items->ProductContent;?></td>
                     <td><?=$items->CategoryName;?></td>
                     <td style="width: 12%;">
-                    <a href="Operation.php?ProductId=<?=$items->ProductId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
-                    <a href="Operation.php?ProductId=<?=$items->ProductId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                    <a href="ProductEdit.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
+                    <a href="Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
                     </td>
                   </tr>
                   </tbody>
@@ -90,8 +107,10 @@ $db=new \vivense\db\Database();
                   <tr>
                     <th>Ürün ID</th>
                     <th>Ürün Adı</th>
-                    <th>Fiyat</th>
-                    <th>Kategori</th>
+                    <th>Ürün Alış Fiyatı</th>
+                    <th>Ürün Satış Fiyatı</th>
+                    <th>Ürün Açıklama</th>
+                    <th>Kategori Adı</th>
                     <th>İşlemler</th>
                   </tr>
                   </tfoot>

@@ -30,3 +30,11 @@ function accessBlock($value1,$value2,$value3)
         exit();
     }
 }
+
+function islemkontrol () {
+
+    if (empty($_SESSION['userkullanici_mail'])) {
+        Header("Location:404.php");
+        exit();
+    }
+}
