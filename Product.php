@@ -21,16 +21,7 @@ $db=new \vivense\db\Database();
       </div>
     </div>
     <div class="col-md-12 text-center">
-      <h3>
-      <?php
-        if (@$_SESSION["deleteproductconfirm"]==true) {?>
-            <div class="alert alert-success">
-            <?=$_SESSION["productmessage"]." "."Numaralı Ürün Silindi";
-              unset($_SESSION["deleteproductconfirm"]);
-              unset($_SESSION["productmessage"]);
-            ?>
-            </div>
-      <?}?>
+      
       </h3>
     </div>
    <section class="content">
@@ -42,6 +33,19 @@ $db=new \vivense\db\Database();
                 <h3 class="card-title"><a href="ProductAdd.php"><button class="btn btn-success">Yeni Ürün Ekle</button></a></h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
+                  <li class="nav-item mr-5">
+                    <h6>
+                      <?php
+                        if (@$_SESSION["deleteproductconfirm"]==true) {?>
+                            <div class="alert alert-success">
+                            <?=$_SESSION["productmessage"]." "."Numaralı Ürün Silindi";
+                              unset($_SESSION["deleteproductconfirm"]);
+                              unset($_SESSION["productmessage"]);
+                            ?>
+                            </div>
+                      <?}?>
+                    </h6>
+                  </li>
                     <li class="nav-item">
                       <form action="" method="POST">
                         <select name="category" class="form-control">

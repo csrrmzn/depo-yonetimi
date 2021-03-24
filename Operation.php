@@ -81,7 +81,6 @@ if (isset($_GET['UserId']))
 
 }
 
-$deger=155;
 //Ürün Silme
 if ($_GET["ProductId"]) {
     $productId=$_GET["ProductId"];
@@ -93,5 +92,19 @@ if ($_GET["ProductId"]) {
     }else {
         $_SESSION["producterrormessage"]=$productId;
         go("Product.php");
+    }
+}
+
+//Kategori Silme
+if ($_GET["CategoryId"]) {
+    $categoryId=$_GET["CategoryId"];
+    $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
+    if ($deleteCategory==true) {
+        $_SESSION["deletecategoryconfirm"]=true;
+        $_SESSION["categorymessage"]=$categoryId;
+        go("Category.php");
+    }else {
+        $_SESSION["categoryerrormessage"]=$categoryId;
+        go("Category.php");
     }
 }

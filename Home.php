@@ -2,9 +2,7 @@
 include "Header.php";
 include "SideBar.php";
 $db=new \vivense\db\Database();
-
 ?>
-
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

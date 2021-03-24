@@ -76,10 +76,18 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
 		 		  </div>';
                    go("Home.php",3);
 		} else {
-                echo '<div class="alert alert-success">
-			  		<strong>Lütfen Güvenlik Adımını Doğrulayınız!!</strong>
-		 		  </div>';
-                  comeBack(1);
+            if (empty($username) && empty($password)) {
+                echo'<div class="alert alert-success">
+			  		    <strong>Kullanıcı Adınız veya Şifrenizi Boş Bırakmayınız</strong>
+		 		    </div>';
+                    comeBack(1);
+            }else {
+                echo'<div class="alert alert-success">
+			  		<strong>Güvenlik Adımı Başarılı!</strong>
+		 		</div>';
+                   comeBack(1);
+            }
+            
 		}
 
     
@@ -89,4 +97,4 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
         Bu Sayfayı Görüntüleme Yetkiniz Bulunmamaktadır."."Giriş Ekranına Yönlendiriliyorsunuz
     </div>
     <? go("Login.php",3);
-}//Giriş İşlemi Bitti
+}

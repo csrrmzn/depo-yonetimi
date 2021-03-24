@@ -21,9 +21,6 @@ include "Function.php";
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <?php
-  
-  ?>
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="Login.php" class="h1"><b>Depo Yönetimi</b></a>
@@ -50,19 +47,9 @@ include "Function.php";
         </div>
         <div class="g-recaptcha" data-sitekey="6Lec1IUaAAAAAMUokhFj8TrPK6dob_VMxE5VxJiM"></div>
         <div class="row">
-          <!--<div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Beni Hatırla
-              </label>
-            </div>
-          </div> -->
-          <!-- /.col -->
           <div class="col-12">
             <button type="submit" name="login" class="btn btn-success btn-sm btn-block">Giriş Yapınız</button>
           </div>
-          <!-- /.col -->
         </div>
       </form>
 
@@ -74,8 +61,6 @@ include "Function.php";
           <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
         </a>
       </div>
-      <!-- /.social-auth-links -->
-
       <p class="mb-1">
         <a href="NewPassword.php">Şifremi Unuttum!</a>
       </p>
@@ -83,13 +68,8 @@ include "Function.php";
         <a href="NewRegistration.php" class="text-center">Yeni Kayıt Oluştur</a>
       </p>
     </div>
-    <!-- /.card-body -->
   </div>
-  <!-- /.card -->
 </div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

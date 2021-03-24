@@ -26,8 +26,20 @@ $db=new \vivense\db\Database();
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"><a href="CategoryAdd.php"><button class="btn btn-success">Yeni Kategori Ekle</button></a></h3>
+                <div class="card-tools col-md-6">
+                    <h6>
+                      <?php
+                        if (@$_SESSION["deletecategoryconfirm"]==true) {?>
+                            <div class="alert alert-success">
+                            <?=$_SESSION["categorymessage"]." "."Numaralı Ürün Silindi";
+                              unset($_SESSION["deletecategoryconfirm"]);
+                              unset($_SESSION["categorymessage"]);
+                            ?>
+                            </div>
+                      <?}?>
+                    </h6>
+                </div>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
