@@ -81,7 +81,7 @@ $db=new \vivense\db\Database();
                                 <td><?=$items->ProductPurchasePrice;?></td>
                                 <td><?=$items->ProductSellPrice;?></td>
                                 <td style="width: 12%;">
-                                <a href="Operation.php?ProductId=<?=$items->ProductId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                                <a href="operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                                 </td>
                             </tr>
                             </tbody>

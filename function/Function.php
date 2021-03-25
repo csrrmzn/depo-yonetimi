@@ -1,5 +1,6 @@
 <?php
 session_set_cookie_params(null,'/','localhost',false,true);
+date_default_timezone_set('Europe/Istanbul');
 ob_start();
 session_start();
 
@@ -31,3 +32,20 @@ function accessBlock($value1,$value2,$value3)
     }
 }
 
+function unauthorized()
+{
+    if (empty($_SESSION["username"])) {
+
+        header("Location:Login.php?unauthorized");
+        exit;
+    }
+}
+
+function security($text)
+{
+    $text=trim($text);
+    $text=stripslashes($text);
+    $text=htmlspecialchars($text);
+    $text=strip_tags($text);
+    return $text;
+}

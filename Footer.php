@@ -1,5 +1,5 @@
 <?php
-require_once("Function.php");
+require_once("function/Function.php");
 $value1=basename($_SERVER["PHP_SELF"]);
 $value2=basename(__FILE__);
 accessBlock($value1,$value2,"Home.php");
@@ -8,9 +8,10 @@ accessBlock($value1,$value2,"Home.php");
     <strong>Copyright &copy; 2021 <a href="https://github.com/csrrmzn/depo-yonetimi">World Property</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0-rc
+      <h6><?php echo date('H:i')." ".date("d/m/Y");?></h6>
+      <b>Version</b> 1.1.0-CSR
     </div>
-  </footer>
+</footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -1,6 +1,6 @@
 <?php
 include "db/Database.class.php";
-include "Function.php";
+include "function/Function.php";
 $db=new \vivense\db\Database();
 if (isset($_SESSION["LogedIn"])!=true)
 {
@@ -11,11 +11,11 @@ go("Login.php");
 //Yeni Kayıt İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
 {
-    $username=strip_tags($_POST["name"]);
-    $lastname=strip_tags($_POST["lastname"]);
-    $password=strip_tags($_POST["pass"]);
-    $email=strip_tags($_POST["email"]);
-    $birtday=strip_tags($_POST["birtday"]);
+    $username=security($_POST["name"]);
+    $lastname=security($_POST["lastname"]);
+    $password=security($_POST["pass"]);
+    $email=security($_POST["email"]);
+    $birtday=security($_POST["birtday"]);
 
     if (empty($username) && empty($lastname) && empty($password) && empty($email) && empty($birtday) ) {
         echo "Lütfen Tüm Bilgileri Doldurunuz.";
@@ -41,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
 //Şifre Güncelleme İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && isset($_POST["newpasswordclone"]) && $_POST["newpassword"]==$_POST["newpasswordclone"])
 {
-    $username=strip_tags($_POST["name"]);
-    $password=strip_tags($_POST["newpassword"]);
-    $passwordClone=strip_tags($_POST["newpasswordclone"]);
+    $username=security($_POST["name"]);
+    $password=security($_POST["newpassword"]);
+    $passwordClone=security($_POST["newpasswordclone"]);
 
     if (empty($username) && empty($password) && empty($passwordClone) ) {
         echo "Lütfen Tüm Bilgileri Doldurunuz.";
@@ -86,12 +86,12 @@ if ($_GET["ProductId"]) {
     $productId=$_GET["ProductId"];
     $deleteProduct=$db->Delete("DELETE FROM product WHERE ProductId=?",array($productId));
     if ($deleteProduct==true) {
-        $_SESSION["deleteproductconfirm"]=true;
-        $_SESSION["productmessage"]=$productId;
-        go("Product.php");
+        /*$_SESSION["deleteproductconfirm"]=true;
+        $_SESSION["productmessage"]=$productId;*/
+        go("Product.php?confirm=1&productId=$productId");
     }else {
-        $_SESSION["producterrormessage"]=$productId;
-        go("Product.php");
+       /* $_SESSION["producterrormessage"]=$productId;*/
+        go("Product.php?confirm=0&productId=$productId");
     }
 }
 
@@ -100,11 +100,57 @@ if ($_GET["CategoryId"]) {
     $categoryId=$_GET["CategoryId"];
     $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
     if ($deleteCategory==true) {
-        $_SESSION["deletecategoryconfirm"]=true;
-        $_SESSION["categorymessage"]=$categoryId;
-        go("Category.php");
+        /*$_SESSION["deletecategoryconfirm"]=true;
+        $_SESSION["categorymessage"]=$categoryId;*/
+        go("Category.php?confirm=1&categoryId=$categoryId");
     }else {
-        $_SESSION["categoryerrormessage"]=$categoryId;
-        go("Category.php");
+        /*$_SESSION["categoryerrormessage"]=$categoryId;*/
+        go("Category.php?confirm=0&categoryId=$categoryId");
     }
+}
+
+//Ürün Ekleme İşlemi
+if (isset($_POST["addproduct"]))
+ {
+     $productUniqid=security($_POST["productUniqid"]);
+     $productName=security($_POST["productName"]);
+     $productPurchasePrice=security($_POST["productPurchasePrice"]);
+     $productSellPrice=security($_POST["productSellPrice"]);
+     $productContent=security($_POST["productContent"]);
+     $categoryId=security($_POST["categoryId"]);
+     $addProduct=$db->Insert("INSERT INTO product SET
+                     ProductUniqid=?,
+                     ProductName=?,
+                     ProductPurchasePrice=?,
+                     ProductSellPrice=?,
+                     ProductContent=?,
+                     CategoryId=?",array(
+                     $productUniqid,
+                     $productName,
+                     $productPurchasePrice,
+                     $productSellPrice,
+                     $productContent,
+                     $categoryId));
+     if ($addProduct>0) {
+         go("ProductAdd.php?confirm=1");
+     }elseif ($addProduct<=0 ) {
+         go("ProductAdd.php?confirm=0");
+     }
+}
+
+//Kategori Ekleme İşlemi
+if (isset($_POST["addcategory"]))
+ {
+     $categoryUniqid=security($_POST["categoryUniqid"]);
+     $categoryName=security($_POST["categoryName"]);
+     $addCategory=$db->Insert("INSERT INTO category SET
+                     CategoryUniqid=?,
+                     CategoryName=?",array(
+                     $categoryUniqid,
+                     $categoryName));
+     if ($addCategory>0) {
+         go("CategoryAdd.php?confirm=1");
+     }elseif ($addCategory<=0 ) {
+         go("CategoryAdd.php?confirm=0");
+     }
 }

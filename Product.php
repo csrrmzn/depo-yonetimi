@@ -21,8 +21,6 @@ $db=new \vivense\db\Database();
       </div>
     </div>
     <div class="col-md-12 text-center">
-      
-      </h3>
     </div>
    <section class="content">
       <div class="container-fluid">
@@ -36,14 +34,25 @@ $db=new \vivense\db\Database();
                   <li class="nav-item mr-5">
                     <h6>
                       <?php
-                        if (@$_SESSION["deleteproductconfirm"]==true) {?>
+                        if (@$_GET["confirm"]==1 && $_GET["productId"]) {
+                            $getProductId=$_GET["productId"];
+                          ?>
+                            <div class="alert alert-success">
+                            <?=$getProductId." "."Numaralı Ürün Silindi";
+                            ?>
+                            </div>
+                      <?}?>
+                      <!-- Session İşlemleri İle Yapılan Kontrol Kodları-->
+                      <?php
+                        /*if (@$_SESSION["deleteproductconfirm"]==true) {?>
                             <div class="alert alert-success">
                             <?=$_SESSION["productmessage"]." "."Numaralı Ürün Silindi";
                               unset($_SESSION["deleteproductconfirm"]);
                               unset($_SESSION["productmessage"]);
                             ?>
                             </div>
-                      <?}?>
+                      <?}*/?>
+                      <!-- Session İşlemleri İle Yapılan Kontrol Kodları-->
                     </h6>
                   </li>
                     <li class="nav-item">
@@ -59,7 +68,7 @@ $db=new \vivense\db\Database();
                     </li>
                     <li class="nav-item">
                       <button class="btn btn-primary" type="submit" name="categorysend">Listele</button>
-                        </form>
+                      </form>
                     </li>
                   </ul>
                 </div>
@@ -101,7 +110,7 @@ $db=new \vivense\db\Database();
                     <td><?=$items->CategoryName;?></td>
                     <td style="width: 12%;">
                     <a href="ProductEdit.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
-                    <a href="Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
+                    <a href="operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
                     </td>
                   </tr>
                   </tbody>

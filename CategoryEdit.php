@@ -56,8 +56,8 @@ include "SideBar.php";
                 if (isset($_POST["edit"]))
                 {
                     $categoryId=$_GET["CategoryId"];
-                    $categoryUniqid=strip_tags($_POST["categoryUniqid"]);
-                    $categoryName=strip_tags($_POST["categoryName"]);
+                    $categoryUniqid=security($_POST["categoryUniqid"]);
+                    $categoryName=security($_POST["categoryName"]);
 
                     $editCategory=$db->Update("UPDATE category SET
                                         CategoryUniqid=?,
@@ -68,7 +68,7 @@ include "SideBar.php";
                                         $categoryId
                                         ));
                     if ($editCategory>0) {
-                        go("CategoryEdit.php");
+                        go("Category.php");
                     }
                     
                 }

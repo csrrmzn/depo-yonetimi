@@ -1,6 +1,6 @@
 <?php
 include "db/Database.class.php";
-include "Function.php";
+include "function/Function.php";
 $value1=basename($_SERVER["PHP_SELF"]);
 $value2=basename(__FILE__);
 accessBlock($value1,$value2,"Home.php");

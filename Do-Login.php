@@ -12,7 +12,7 @@
 </html>
 <?php
 include "db/Database.class.php";
-include "Function.php";
+include "function/Function.php";
 $db=new \vivense\db\Database();
 
 //Giriş İşlemi
@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
 		$res = json_decode($response, true);
 		if($res['success'] == true) {
 
-            $username=strip_tags($_POST["username"]);
-            $password=strip_tags($_POST["pass"]);
+            $username=security($_POST["username"]);
+            $password=security($_POST["pass"]);
 
                 $myQuery=$db->getRow("SELECT UserName,UserPassword FROM users WHERE UserName=?",array($username));
                     @$databaseUser=$myQuery->UserName;

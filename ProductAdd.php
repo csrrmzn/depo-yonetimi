@@ -20,16 +20,16 @@ include "SideBar.php";
       </div>
     </section>
     <div class="col-md-6">
-    <?php
-        if ($_SESSION["addProductNumberError"]==0) {?>
-            <div class="alert alert-success" role="alert">
-                Yeni Ürün Kayıt Edildi
+      <?php
+          if (@$_GET["confirm"]==1) { ?>
+              <div class="alert alert-success">
+                Yeni Ürün Eklendi
+              </div>
+          <?php }elseif (@$_GET["confirm"]==0) { ?>
+            <div class="alert alert-success">
+                Yeni Ürün Eklenemedi Lütfen Tekrar Deneyiniz
             </div>
-        <?}elseif ($_SESSION["addProductNumber"]==1) { ?>
-            <div class="alert alert-danger" role="alert">
-                Yeni Ürün Kayıt Edilemedi. Lütfen Tekrar Deneyiniz
-            </div>
-    <?}?>
+         <?php } ?>
     </div>
     <section class="content">
       <div class="row">
@@ -43,7 +43,7 @@ include "SideBar.php";
                 </button>
               </div>
             </div>
-            <form action="" method="POST">
+            <form action="operation/Operation.php" method="POST">
                 <div class="card-body">
                 <div class="form-group">
                     <label for="productUniqid">Ürün ID</label>
@@ -77,42 +77,10 @@ include "SideBar.php";
                     </select>
                 </div>
                 <div>
-                <button type="submit" name="add" class="btn btn-success float-right">Ekle</button>
+                <a href="operation/Operation.php"><button type="submit" name="addproduct" class="btn btn-success float-right">Ekle</button></a>
                 </div>
                 </div>
             </form>
-            <?php
-                if (isset($_POST["add"]))
-                {
-                    $productUniqid=strip_tags($_POST["productUniqid"]);
-                    $productName=strip_tags($_POST["productName"]);
-                    $productPurchasePrice=strip_tags($_POST["productPurchasePrice"]);
-                    $productSellPrice=strip_tags($_POST["productSellPrice"]);
-                    $productContent=strip_tags($_POST["productContent"]);
-                    $categoryId=strip_tags($_POST["categoryId"]);
-
-                    $addProduct=$db->Insert("INSERT INTO product SET
-                                    ProductUniqid=?,
-                                    ProductName=?,
-                                    ProductPurchasePrice=?,
-                                    ProductSellPrice=?,
-                                    ProductContent=?,
-                                    CategoryId=?",array(
-                                    $productUniqid,
-                                    $productName,
-                                    $productPurchasePrice,
-                                    $productSellPrice,
-                                    $productContent,
-                                    $categoryId));
-                    if ($addProduct>0 && isset($_POST["add"])) {
-                        $addProductNumber=1;
-                        $_SESSION["addProductNumber"]=1;
-                    }elseif ($addProduct<=0 || !isset($_POST["add"])) {
-                        $addProductNumberError=0;
-                        $_SESSION["addProductNumberError"]=0;
-                    }
-                }
-            ?>
           </div>
         </div>
         <div class="col-md-6">
@@ -141,10 +109,10 @@ include "SideBar.php";
                       <td><?=$items->ProductUniqid;?></td>
                       <td><?=$items->ProductName;?></td>
                       <td><?=$items->ProductContent;?></td>
-                      <td><?=$items->CategoryName?></td>
+                      <td><?=$items->CategoryName;?></td>
                     </tr>
                   </tbody>
-                  <? } ?>
+                  <?php } ?>
                 </table>
               </div>
             </div>

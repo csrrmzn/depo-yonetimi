@@ -1,6 +1,6 @@
 <?php
 require_once("db/Database.class.php");
-require_once("Function.php");
+require_once("function/Function.php");
 $db=new \vivense\db\Database();
 $value1=basename($_SERVER["PHP_SELF"]);
 $value2=basename(__FILE__);
@@ -18,7 +18,7 @@ accessBlock($value1,$value2,"Home.php");
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="MyAccount.php" class="d-block"><?php echo $_SESSION["username"];?></a>

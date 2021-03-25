@@ -29,14 +29,23 @@ $db=new \vivense\db\Database();
                 <div class="card-tools col-md-6">
                     <h6>
                       <?php
-                        if (@$_SESSION["deletecategoryconfirm"]==true) {?>
+                        if (@$_GET["confirm"]==1 && $_GET["categoryId"]) {
+                            $getCategoryId=$_GET["categoryId"];
+                          ?>
+                            <div class="alert alert-success">
+                            <?=$getCategoryId." "."Numaralı Kategori Silindi";
+                            ?>
+                            </div>
+                      <?}?>
+                      <?php
+                        /*if (@$_SESSION["deletecategoryconfirm"]==true) {?>
                             <div class="alert alert-success">
                             <?=$_SESSION["categorymessage"]." "."Numaralı Ürün Silindi";
                               unset($_SESSION["deletecategoryconfirm"]);
                               unset($_SESSION["categorymessage"]);
                             ?>
                             </div>
-                      <?}?>
+                      <?}*/?>
                     </h6>
                 </div>
               </div>
@@ -48,6 +57,7 @@ $db=new \vivense\db\Database();
                   <th>Kategori ID</th>
                   <th>Kategori Adı</th>
                   <th>Kategoriye Ait Ürün Sayısı</th>
+                  <th>Alt Kategoriler</th>
                   <th>İşlemler</th>
                   </tr>
                   </thead>
@@ -64,9 +74,22 @@ $db=new \vivense\db\Database();
                   <td><?=$items->CategoryUniqid?></td>
                   <td><?=$items->CategoryName;?></td>
                   <td><?=$recordsCategory;?></td>
+                  <td>
+                    <form action="" method="POST">
+                        <select name="category" class="form-control">
+                          <?php
+                            $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId WHERE category.CategoryId=?",array($number));
+                                          foreach ($subCategory as $itemsSubCategory) {                   
+                          ?>
+                          <option value="<?=$itemsSubCategory->SubCategoryId;?>"><?=$itemsSubCategory->SubCategoryName; ?></option>
+                          <? } ?> 
+                        </select>
+                    </li>
+                    </form>
+                  </td>
                   <td align="middle" >
                   <a href="CategoryEdit.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
-                  <a href="Operation.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                  <a href="operation/Operation.php?=$items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                   </td>
                   </tr>
                   </tbody>
@@ -76,6 +99,8 @@ $db=new \vivense\db\Database();
                   <th>Sıra</th>
                   <th>Kategori ID</th>
                   <th>Kategori Adı</th>
+                  <th>Kategoriye Ait Ürün Sayısı</th>
+                  <th>Alt Kategoriler</th>
                   <th>İşlemler</th>
                   </tr>
                   </tfoot>
