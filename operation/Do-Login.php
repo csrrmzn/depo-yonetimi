@@ -11,8 +11,8 @@
 </head>
 </html>
 <?php
-include "db/Database.class.php";
-include "function/Function.php";
+include "../db/Database.class.php";
+include "../function/Function.php";
 $db=new \vivense\db\Database();
 
 //Giriş İşlemi
@@ -46,46 +46,32 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
                     @$databasePass=$myQuery->UserPassword;
 
 
-                if (empty($username) && empty($password)) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        Lütfen Kullanıcı Adınızı ve Şifrenizi Boş Bırakmayınız Giriş Ekranına Yönlendiriliyorsunuz!
-                    </div>
-                    <? comeBack(4);
+                if (empty($username) && empty($password)) {
+                    go("../Login.php?confirm=empty");
                 }else {
-                    if ($databaseUser != $username || $databasePass != $password ) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        Kullanıcı Adınız veya Şifreniz Hatalı Giriş Ekranına Yönlendiriliyorsunuz!
-                    </div>
-                        <? comeBack(3);
+                    if ($databaseUser != $username || $databasePass != $password ) {
+                        go("../Login.php?confirm=error");
                     }else {
                         session_regenerate_id(true); // Oturum sabitlemesine karşı koruma
                         $_SESSION["LogedIn"]=true;
                         $_SESSION["username"]=$username;
                         $_SESSION["LoginIp"]=$_SERVER["REMOTE_ADDR"];
-                        $_SESSION["userAgent"]=$_SERVER["HTTP_USER_AGENT"]; ?>
-                        <div class="alert alert-success" role="alert">
-                            Giriş Yapıldı Yönlendiriliyorsunuz!
-                        </div>
-                        <? go("Home.php",3);
+                        $_SESSION["userAgent"]=$_SERVER["HTTP_USER_AGENT"];
+
+                        go("../Home.php?confirm=login");
 
                     }
                 }
 
-  			echo '<div class="alert alert-success">
+  			/*echo '<div class="alert alert-success">
 			  		<strong>Güvenlik Adımı Başarılı!</strong>
 		 		  </div>';
-                   go("Home.php",3);
+                   go("../Home.php",3); */
 		} else {
             if (empty($username) && empty($password)) {
-                echo'<div class="alert alert-success">
-			  		    <strong>Kullanıcı Adınız veya Şifrenizi Boş Bırakmayınız</strong>
-		 		    </div>';
-                    comeBack(1);
+                    go("../Login.php?confirm=empty2");
             }else {
-                echo'<div class="alert alert-success">
-			  		<strong>Güvenlik Adımı Başarılı!</strong>
-		 		</div>';
-                   comeBack(1);
+                    go("../Login.php?confirm=success");
             }
             
 		}
@@ -96,5 +82,5 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
         <h3>Lütfen Giriş Yapınız</h3>
         Bu Sayfayı Görüntüleme Yetkiniz Bulunmamaktadır."."Giriş Ekranına Yönlendiriliyorsunuz
     </div>
-    <? go("Login.php",3);
+    <? go("../Login.php",3);
 }

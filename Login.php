@@ -21,6 +21,28 @@ include "function/Function.php";
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+<?php
+  if (@$_GET["confirm"]=="okey") { ?>
+      <div class="alert alert-success">
+        Kayıt Oluşturuldu. Lütfen Giriş Yapınız
+      </div>
+<?php }elseif (@$_GET["confirm"]=="empty") { ?>
+      <div class="alert alert-danger">
+        Lütfen Kullanıcı Adınızı ve Şifrenizi Boş Bırakmayınız
+      </div>
+<?php }elseif (@$_GET["confirm"]=="error") { ?>
+      <div class="alert alert-danger">
+        Kullanıcı Adınız veya Şifreniz Hatalı
+      </div>
+<?php }elseif (@$_GET["confirm"]=="empty2") { ?>
+      <div class="alert alert-danger">
+        Kullanıcı Adınız veya Şifrenizi Boş Bırakmayınız
+      </div>
+<?php }elseif (@$_GET["confirm"]=="success") { ?>
+      <div class="alert alert-success">
+        Güvenlik Adımı Başarılı!
+      </div>
+<?php } ?>
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="Login.php" class="h1"><b>Depo Yönetimi</b></a>
@@ -28,7 +50,7 @@ include "function/Function.php";
     <div class="card-body">
       <p class="login-box-msg">Lütfen Giriş Yapınız</p>
 
-      <form method="post" action="Do-Login.php" >
+      <form method="post" action="operation/Do-Login.php" >
         <div class="input-group mb-3">
           <input type="text" name="username" placeholder="Adınız" class="form-control">
           <div class="input-group-append">

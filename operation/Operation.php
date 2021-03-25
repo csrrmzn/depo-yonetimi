@@ -1,26 +1,33 @@
 <?php
-include "db/Database.class.php";
-include "function/Function.php";
+include "../db/Database.class.php";
+include "../function/Function.php";
 $db=new \vivense\db\Database();
 if (isset($_SESSION["LogedIn"])!=true)
 {
-go("Login.php");
+go("../Login.php");
 }else {
-    go("Home.php");
+    go("../Home.php");
 }
+
+
+/*
 //Yeni Kayıt İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
 {
-    $username=security($_POST["name"]);
-    $lastname=security($_POST["lastname"]);
-    $password=security($_POST["pass"]);
-    $email=security($_POST["email"]);
-    $birtday=security($_POST["birtday"]);
+    if (isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["password"]) && isset($_POST["passwordclone"]) && isset($_POST["email"]) && isset($_POST["birtday"]))
+    {
 
-    if (empty($username) && empty($lastname) && empty($password) && empty($email) && empty($birtday) ) {
-        echo "Lütfen Tüm Bilgileri Doldurunuz.";
-        comeBack(3);
-    }else {
+        if (empty($_POST["name"]) || empty($_POST["lastname"]) || empty($_POST["password"]) || empty($_POST["passwordclone"]) || empty($_POST["email"])
+        || empty($_POST["birtday"]) ) {
+            go("NewRegistration.php?confirm=empty");
+        }else {
+            
+            $username=security($_POST["name"]);
+            $lastname=security($_POST["lastname"]);
+            $password=security($_POST["password"]);
+            $email=security($_POST["email"]);
+            $birtday=security($_POST["birtday"]);
+
         $addUser=$db->Insert('INSERT INTO users SET
                             UserName=?,
                             UserLastname=?,
@@ -29,14 +36,21 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
                             UserBirtday=?',
                             array($username,$lastname,$password,$email,$birtday));
         if ($addUser==true) {
-            echo $add="Kayıt Başarılı Giriş Ekranına Yönlendiriliyorsunuz"."<br>";
+            go("Login.php?confirm=okey");
         }else {
-            echo $unadd="Kayıt Gerçekleştirilemedi Giriş Ekranına Yönlendiriliyorsunuz ";
-            comeBack(3);
+            go("NewRegistration.php?confirm=no");
         }
     }
+        
+    }else {
+        go("NewRegistration.php?confirm=reloaded");
+    }
 
+}else {
+    go("NewRegistration.php?confirm=error");
 }
+*/
+
 
 //Şifre Güncelleme İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && isset($_POST["newpasswordclone"]) && $_POST["newpassword"]==$_POST["newpasswordclone"])
@@ -54,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && iss
                             array($password,$username));
         if ($addNewPassword==true) {
             echo $updatePassword="Şifreniz Güncellendi Giriş Ekranına Yönlendiriliyorsunuz"."<br>";
-            go("Index.php",1);
+            go("../Index.php",1);
         }else {
             echo $unupdatePassword="Şifreniz Güncellenemedi! Lütfen Tekrar Deneyiniz ";
             comeBack(3);
@@ -73,7 +87,7 @@ if (isset($_GET['UserId']))
                             array($userıd));
         if ($deleteMyAccount==true) {
             echo $delete="Hesabınız Silindi Giriş Ekranına Yönlendiriliyorsunuz"."<br>";
-            go("Login.php",3);
+            go("../Login.php",3);
         }else {
             echo $undelete="Hesabınız Silinemedi Giriş Ekranına Yönlendiriliyorsunuz ";
             comeBack(1);
@@ -88,10 +102,10 @@ if ($_GET["ProductId"]) {
     if ($deleteProduct==true) {
         /*$_SESSION["deleteproductconfirm"]=true;
         $_SESSION["productmessage"]=$productId;*/
-        go("Product.php?confirm=1&productId=$productId");
+        go("../Product.php?confirm=1&productId=$productId");
     }else {
        /* $_SESSION["producterrormessage"]=$productId;*/
-        go("Product.php?confirm=0&productId=$productId");
+        go("../Product.php?confirm=0&productId=$productId");
     }
 }
 
@@ -102,10 +116,10 @@ if ($_GET["CategoryId"]) {
     if ($deleteCategory==true) {
         /*$_SESSION["deletecategoryconfirm"]=true;
         $_SESSION["categorymessage"]=$categoryId;*/
-        go("Category.php?confirm=1&categoryId=$categoryId");
+        go("../Category.php?confirm=1&categoryId=$categoryId");
     }else {
         /*$_SESSION["categoryerrormessage"]=$categoryId;*/
-        go("Category.php?confirm=0&categoryId=$categoryId");
+        go("../Category.php?confirm=0&categoryId=$categoryId");
     }
 }
 
@@ -132,9 +146,9 @@ if (isset($_POST["addproduct"]))
                      $productContent,
                      $categoryId));
      if ($addProduct>0) {
-         go("ProductAdd.php?confirm=1");
+         go("../ProductAdd.php?confirm=1");
      }elseif ($addProduct<=0 ) {
-         go("ProductAdd.php?confirm=0");
+         go("../ProductAdd.php?confirm=0");
      }
 }
 
@@ -149,8 +163,8 @@ if (isset($_POST["addcategory"]))
                      $categoryUniqid,
                      $categoryName));
      if ($addCategory>0) {
-         go("CategoryAdd.php?confirm=1");
+         go("../CategoryAdd.php?confirm=1");
      }elseif ($addCategory<=0 ) {
-         go("CategoryAdd.php?confirm=0");
+         go("../CategoryAdd.php?confirm=0");
      }
 }

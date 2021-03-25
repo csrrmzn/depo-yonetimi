@@ -87,8 +87,13 @@ $db=new \vivense\db\Database();
           </div>
         </div>
           <div class="row">
-            <div class="col-md-6">
-              
+            <div class="col-md-12 text-center">
+              <?php
+                if (@$_GET["confirm"]=="login") { ?>
+                    <div class="alert alert-success">
+                      Hoşgeldiniz Sayın <?=$_SESSION["username"];?>
+                    </div>
+              <?php } ?>
             </div>
           </div>
       </div>
