@@ -1,6 +1,6 @@
 <?php
-include "Header.php";
-include "SideBar.php";
+include "../Header.php";
+include "../SideBar.php";
 $db=new \vivense\db\Database();
 ?>
 
@@ -110,7 +110,7 @@ $db=new \vivense\db\Database();
                     <td><?=$items->CategoryName;?></td>
                     <td style="width: 12%;">
                     <a href="ProductEdit.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
-                    <a href="operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
+                    <a href="../operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
                     </td>
                   </tr>
                   </tbody>

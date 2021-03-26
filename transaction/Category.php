@@ -1,6 +1,6 @@
 <?php
-include "Header.php";
-include "SideBar.php";
+include "../Header.php";
+include "../SideBar.php";
 $db=new \vivense\db\Database();
 ?>
 <div class="content-wrapper">

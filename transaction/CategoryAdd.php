@@ -1,6 +1,6 @@
 <?php
-include "Header.php";
-include "SideBar.php";
+include "../Header.php";
+include "../SideBar.php";
 ?>
 <div class="content-wrapper">
     <div class="content-header">
@@ -47,7 +47,7 @@ include "SideBar.php";
                                     </button>
                                 </div>
                                 </div>
-                                <form action="operation/Operation.php" method="POST">
+                                <form action="../operation/Operation.php" method="POST">
                                 <div class="card-body">
                                 <div class="form-group">
                                     <label for="categoryUniqid">Kategori ID</label>

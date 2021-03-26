@@ -1,5 +1,5 @@
 <?php 
-include "function/Function.php";
+include "../function/Function.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@ include "function/Function.php";
     <div class="card-body">
       <p class="login-box-msg"></p>
 
-      <form method="post" action="Operation.php">
+      <form method="post" action="../operation/Operation.php">
         <div class="input-group mb-3">
           <input type="text" required="required" name="name" placeholder="Adınız" class="form-control">
           <div class="input-group-append">

@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]) && is
 		if($res['success'] == true)
         {
 
-            if (isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["password"])==isset($_POST["passwordclone"]) && isset($_POST["email"]) && isset($_POST["birtday"]))  
+            if (isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["password"])==isset($_POST["passwordclone"]) && isset($_POST["phonenumber"]) && isset($_POST["email"]) && isset($_POST["birtday"]))  
             {
           
 
@@ -120,23 +120,26 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]) && is
                 $username=security($_POST["name"]);
                 $lastname=security($_POST["lastname"]);
                 $password=security($_POST["password"]);
+                $phone=security($_POST["phonenumber"]);
                 $email=security($_POST["email"]);
                 $birtday=security($_POST["birtday"]);
 
+                $password=md5(md5(sha1(sha1($password))));
                 $addUser=$db->Insert('INSERT INTO users SET
                             UserName=?,
                             UserLastname=?,
                             UserPassword=?,
+                            UserPhone=?,
                             UserEmail=?,
                             UserBirtday=?',
                             array(
                             $username,
                             $lastname,
                             $password,
+                            $phone,
                             $email,
                             $birtday));
-
-                    
+       
                 }
         
             }else {

@@ -1,6 +1,6 @@
 <?php
-include "Header.php";
-include "SideBar.php";
+include "../Header.php";
+include "../SideBar.php";
 ?>
 
   <div class="content-wrapper ">
@@ -43,7 +43,7 @@ include "SideBar.php";
                 </button>
               </div>
             </div>
-            <form action="operation/Operation.php" method="POST">
+            <form action="../operation/Operation.php" method="POST">
                 <div class="card-body">
                 <div class="form-group">
                     <label for="productUniqid">Ürün ID</label>
@@ -77,7 +77,7 @@ include "SideBar.php";
                     </select>
                 </div>
                 <div>
-                <a href="operation/Operation.php"><button type="submit" name="addproduct" class="btn btn-success float-right">Ekle</button></a>
+                <a href="../operation/Operation.php"><button type="submit" name="addproduct" class="btn btn-success float-right">Ekle</button></a>
                 </div>
                 </div>
             </form>

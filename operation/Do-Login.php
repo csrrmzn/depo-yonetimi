@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
 
             $username=security($_POST["username"]);
             $password=security($_POST["pass"]);
-
+            
                 $myQuery=$db->getRow("SELECT UserName,UserPassword FROM users WHERE UserName=?",array($username));
                     @$databaseUser=$myQuery->UserName;
                     @$databasePass=$myQuery->UserPassword;
@@ -49,6 +49,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
                 if (empty($username) && empty($password)) {
                     go("../Login.php?confirm=empty");
                 }else {
+                    
+                        $password=md5(md5(sha1(sha1($password))));
                     if ($databaseUser != $username || $databasePass != $password ) {
                         go("../Login.php?confirm=error");
                     }else {
@@ -69,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
                    go("../Home.php",3); */
 		} else {
             if (empty($username) && empty($password)) {
-                    go("../Login.php?confirm=empty2");
+                    go("../Login.php?confirm=securityerror");
             }else {
                     go("../Login.php?confirm=success");
             }

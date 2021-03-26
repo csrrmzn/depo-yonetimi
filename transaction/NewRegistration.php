@@ -1,5 +1,5 @@
 <?php 
-include "function/Function.php";
+include "../function/Function.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +58,7 @@ include "function/Function.php";
     </div>
     <div class="card-body">
       <p class="login-box-msg"></p>
-      <form method="post" action="operation/Do-NewRegistration.php">
+      <form method="post" action="../operation/Do-NewRegistration.php">
         <div class="input-group mb-3">
           <input type="text" name="name" placeholder="Adınız" class="form-control">
           <div class="input-group-append">
@@ -100,7 +100,15 @@ include "function/Function.php";
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" name="birtday" placeholder="Doğum Tarihiniz" class="form-control">
+          <input type="tel" name="phonenumber" pattern="[0-9]{4}-[0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="Telefon Numaranız" class="form-control">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-phone"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="date" name="birtday" placeholder="Doğum Tarihinizi Giriniz" class="form-control">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-birthday-cake"></span>
@@ -116,7 +124,7 @@ include "function/Function.php";
       </form>
       <p class="mb-0">
         <a href="NewPassword.php" class="float-left">Şifremi Unuttum</a>
-        <a href="Login.php"  class="float-right">Ben Zaten Üyeyim</a>
+        <a href="../Login.php"  class="float-right">Ben Zaten Üyeyim</a>
       </p>
     </div>
   </div>

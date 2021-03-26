@@ -34,9 +34,9 @@ include "function/Function.php";
       <div class="alert alert-danger">
         Kullanıcı Adınız veya Şifreniz Hatalı
       </div>
-<?php }elseif (@$_GET["confirm"]=="empty2") { ?>
+<?php }elseif (@$_GET["confirm"]=="securityerror") { ?>
       <div class="alert alert-danger">
-        Kullanıcı Adınız veya Şifrenizi Boş Bırakmayınız
+        Lütfen Güvenlik Adımını Doğrulayınız
       </div>
 <?php }elseif (@$_GET["confirm"]=="success") { ?>
       <div class="alert alert-success">

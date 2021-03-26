@@ -1,6 +1,6 @@
 <?php 
-include "Header.php";
-include "SideBar.php";
+include "../Header.php";
+include "../SideBar.php";
 ?>
 <div class="content-wrapper">
     <div class="content-header">
