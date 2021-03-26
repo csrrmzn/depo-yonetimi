@@ -84,10 +84,10 @@ include "function/Function.php";
         </a>
       </div>-->
       <p class="mb-1">
-        <a href="NewPassword.php">Şifremi Unuttum!</a>
+        <a href="transaction/NewPassword.php">Şifremi Unuttum!</a>
       </p>
       <p class="mb-0">
-        <a href="NewRegistration.php" class="text-center">Yeni Kayıt Oluştur</a>
+        <a href="transaction/NewRegistration.php" class="text-center">Yeni Kayıt Oluştur</a>
       </p>
     </div>
   </div>

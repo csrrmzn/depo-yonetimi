@@ -13,7 +13,7 @@ $db=new \vivense\db\Database();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="Index.php">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="../Index.php">Anasayfa</a></li>
               <li class="breadcrumb-item active">Ürünler</li>
             </ol>
           </div>
@@ -137,4 +137,4 @@ $db=new \vivense\db\Database();
     </section>
 </div>
 <?php
-include "Footer.php";
+include "../Footer.php";

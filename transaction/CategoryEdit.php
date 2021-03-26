@@ -11,7 +11,7 @@ include "../SideBar.php";
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="../Index.php">Anasayfa</a></li>
               <li class="breadcrumb-item active">Kategori Düzenle</li>
             </ol>
           </div>
@@ -51,7 +51,7 @@ include "../SideBar.php";
                 </div>
                 </div>
             </form>
-            <? } ?>
+            <?php } ?>
             <?php
                 if (isset($_POST["edit"]))
                 {
@@ -79,4 +79,4 @@ include "../SideBar.php";
     </section>
 </div>
 <?php
-include "Footer.php";
+include "../Footer.php";

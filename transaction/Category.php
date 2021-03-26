@@ -12,7 +12,7 @@ $db=new \vivense\db\Database();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="Index.php">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="../Index.php">Anasayfa</a></li>
               <li class="breadcrumb-item active">Ürün Kategoriler</li>
             </ol>
           </div>
@@ -89,7 +89,7 @@ $db=new \vivense\db\Database();
                   </td>
                   <td align="middle" >
                   <a href="CategoryEdit.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
-                  <a href="operation/Operation.php?=$items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                  <a href="../operation/Operation.php?=$items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                   </td>
                   </tr>
                   </tbody>
@@ -115,5 +115,5 @@ $db=new \vivense\db\Database();
 </div>
 
 <?php
-include "Footer.php";
+include "../Footer.php";
 ?>

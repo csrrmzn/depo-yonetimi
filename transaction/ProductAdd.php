@@ -12,7 +12,7 @@ include "../SideBar.php";
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="../Index.php">Anasayfa</a></li>
               <li class="breadcrumb-item active">Ürün Ekle</li>
             </ol>
           </div>
@@ -121,4 +121,4 @@ include "../SideBar.php";
     </section>
 </div>
 <?php
-include "Footer.php";
+include "../Footer.php";
