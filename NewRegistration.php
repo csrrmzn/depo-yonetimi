@@ -1,5 +1,5 @@
 <?php 
-include "../function/Function.php";
+include "function/Function.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +58,7 @@ include "../function/Function.php";
     </div>
     <div class="card-body">
       <p class="login-box-msg"></p>
-      <form method="post" action="../operation/Do-NewRegistration.php">
+      <form method="post" action="operation/Do-NewRegistration.php">
         <div class="input-group mb-3">
           <input type="text" name="name" placeholder="Adınız" class="form-control">
           <div class="input-group-append">
@@ -124,7 +124,7 @@ include "../function/Function.php";
       </form>
       <p class="mb-0">
         <a href="NewPassword.php" class="float-left">Şifremi Unuttum</a>
-        <a href="../Login.php"  class="float-right">Ben Zaten Üyeyim</a>
+        <a href="Login.php"  class="float-right">Ben Zaten Üyeyim</a>
       </p>
     </div>
   </div>

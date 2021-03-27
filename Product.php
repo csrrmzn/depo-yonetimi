@@ -1,6 +1,6 @@
 <?php
-include "../Header.php";
-include "../SideBar.php";
+include "Header.php";
+include "SideBar.php";
 $db=new \vivense\db\Database();
 ?>
 
@@ -13,7 +13,7 @@ $db=new \vivense\db\Database();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../Index.php">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="Index.php">Anasayfa</a></li>
               <li class="breadcrumb-item active">Ürünler</li>
             </ol>
           </div>
@@ -110,7 +110,7 @@ $db=new \vivense\db\Database();
                     <td><?=$items->CategoryName;?></td>
                     <td style="width: 12%;">
                     <a href="ProductEdit.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
-                    <a href="../operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
+                    <a href="operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
                     </td>
                   </tr>
                   </tbody>
@@ -137,4 +137,4 @@ $db=new \vivense\db\Database();
     </section>
 </div>
 <?php
-include "../Footer.php";
+include "Footer.php";

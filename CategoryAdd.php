@@ -1,6 +1,6 @@
 <?php
-include "../Header.php";
-include "../SideBar.php";
+include "Header.php";
+include "SideBar.php";
 ?>
 <div class="content-wrapper">
     <div class="content-header">
@@ -11,7 +11,7 @@ include "../SideBar.php";
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../Index.php">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="Index.php">Anasayfa</a></li>
               <li class="breadcrumb-item active">Kategori Ekleme</li>
             </ol>
           </div>
@@ -47,7 +47,7 @@ include "../SideBar.php";
                                     </button>
                                 </div>
                                 </div>
-                                <form action="../operation/Operation.php" method="POST">
+                                <form action="operation/Operation.php" method="POST">
                                 <div class="card-body">
                                 <div class="form-group">
                                     <label for="categoryUniqid">Kategori ID</label>
@@ -58,7 +58,7 @@ include "../SideBar.php";
                                     <input type="text" name="categoryName" class="form-control" ></input>
                                 </div>
                                 <div class="col-md-12">
-                                    <a href="../operation/Operation.php"><button type="button" name="addcategory" class="btn btn-success" data-card-widget="collapse" title="Collapse">Ekle</button></a>
+                                    <a href="operation/Operation.php"><button type="button" name="addcategory" class="btn btn-success" data-card-widget="collapse" title="Collapse">Ekle</button></a>
                                 </div>
                                 </div>
                                 </form>
@@ -134,4 +134,4 @@ include "../SideBar.php";
 
 
 <?php
-include "../Footer.php";
+include "Footer.php";

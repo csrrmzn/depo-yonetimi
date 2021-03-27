@@ -3,7 +3,7 @@ include "db/Database.class.php";
 include "function/Function.php";
 $value1=basename($_SERVER["PHP_SELF"]);
 $value2=basename(__FILE__);
-accessBlock($value1,$value2,"Home.php");
+accessBlock($value1,$value2,"../Home.php");
 if (isset($_SESSION["LogedIn"])!=true)
 {
 go("Login.php");

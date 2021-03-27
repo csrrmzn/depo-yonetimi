@@ -1,5 +1,5 @@
 <?php 
-include "../function/Function.php";
+include "function/Function.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

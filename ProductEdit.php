@@ -1,6 +1,6 @@
 <?php
-include "../Header.php";
-include "../SideBar.php";
+include "Header.php";
+include "SideBar.php";
 ?>
 <div class="content-wrapper ">
     <section class="content-header">
@@ -11,7 +11,7 @@ include "../SideBar.php";
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../Index.php">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="Index.php">Anasayfa</a></li>
               <li class="breadcrumb-item active">Ürün Düzenle</li>
             </ol>
           </div>
@@ -113,4 +113,4 @@ include "../SideBar.php";
     </section>
 </div>
 <?php
-include "../Footer.php";
+include "Footer.php";
