@@ -65,13 +65,13 @@ accessBlock($value1,$value2,"Home.php");
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Import.php" class="nav-link">
+                <a href="Download.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Toplu Ürün İndirme</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="Export.php" class="nav-link">
+                <a href="Upload.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Toplu Ürün Yükleme</p>
                 </a>

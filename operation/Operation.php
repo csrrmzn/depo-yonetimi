@@ -10,7 +10,7 @@ go("../Login.php");
 }
 
 
-/*
+/* 
 //Yeni Kayıt İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
 {
@@ -72,9 +72,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && iss
                                     UserPassword=? WHERE UserName=?',
                                     array($password,$username));
                 if ($addNewPassword==true) {
-                    go("Login.php?confirm=updatepassword");
+                    go("../Login.php?confirm=updatepassword");
                 }else {
-                    go("NewPassword.php?confirm=unupdatepassword");
+                    go("../NewPassword.php?confirm=unupdatepassword");
                 }
             
         }
@@ -102,7 +102,7 @@ if (isset($_POST["deletemyaccount"]))
 
 //Ürün Silme
 if ($_GET["ProductId"]) {
-    $productId=$_GET["ProductId"];
+    $productId=security($_GET["ProductId"]);
     $deleteProduct=$db->Delete("DELETE FROM product WHERE ProductId=?",array($productId));
     if ($deleteProduct==true) {
         go("../Product.php?confirm=1&productId=$productId");
@@ -111,79 +111,9 @@ if ($_GET["ProductId"]) {
     }
 }
 
-//Hesap Düzenleme İşlemi
-if (isset($_POST["editmyaccount"]) && isset($_POST["newusername"]) && isset($_POST["newuserlastname"]) && isset($_POST["newsecretcode"]) &&
-    isset($_POST["newuserphone"]) && isset($_POST["newuseremail"]) && isset($_POST["newuserbirtday"]) )
-{
-    if (!empty($_POST["newusername"]) && !empty($_POST["newuserlastname"]) && !empty($_POST["newuserpassword"]) && !empty($_POST["newsecretcode"]) &&    
-        !empty($_POST["newuserphone"]) && !empty($_POST["newuseremail"]) && !empty($_POST["newuserbirtday"]))
-    {
-        $editusername=security($_POST["newusername"]);
-        $edituserlastname=security($_POST["newuserlastname"]);
-        $edituserpassword=security($_POST["newuserpassword"]);
-        $editusersecretcode=security($_POST["newusersecretcode"]);
-        $edituserphone=security($_POST["newuserphone"]);
-        $edituseremail=security($_POST["newuseremail"]);
-        $edituserbirtday=security($_POST["newuserbirtday"]);
-
-        $userıd=$_GET["userıd"];
-        $edituserpassword=base64_encode($edituserpassword);
-        $editMyAccount=$db->Update("UPDATE users SET
-                                    UserName=?,
-                                    UserLastname=?,
-                                    UserPassword=?,
-                                    UserSecretcode=?,
-                                    UserPhone=?,
-                                    UserEmail=?,
-                                    UserBirtday=? WHERE UserId=?",
-                                    array(
-                                    $editusername,
-                                    $edituserlastname,
-                                    $edituserpassword,
-                                    $editusersecretcode,
-                                    $edituserphone,
-                                    $edituseremail,
-                                    $edituserbirtday, $userıd));
-        if ($editMyAccount==true) {
-            go("../MyAccount.php?confirm=successful");
-        }else {
-            go("../MyAccount.php?confirm=unsuccessful");
-        }
-    }else {
-        go("../MyAccount.php?confirm=empty");
-    }
-
-}else {
-    go("../MyAccount.php?confirm=error");
-}
-
-//Kategori Düzenleme
-if (isset($_POST["edit"]))
-{
-    if (isset($_GET["CategoryId"]) && isset($_POST["categoryUniqid"]) && isset($_POST["categoryName"])) {
-        
-        $categoryId=$_GET["CategoryId"];
-        $categoryUniqid=security($_POST["categoryUniqid"]);
-        $categoryName=security($_POST["categoryName"]);
-        $editCategory=$db->Update("UPDATE category SET
-                            CategoryUniqid=?,
-                            CategoryName=?
-                            WHERE CategoryId=?",array(
-                            $categoryUniqid,
-                            $categoryName,
-                            $categoryId
-                            ));
-        if ($editCategory>0) {
-            go("Category.php");
-        }
-    }else {
-        go("../CategoryEdit.php?confirm=categoryediterror");
-    }
-}
-
 //Kategori Silme
 if ($_GET["CategoryId"]) {
-    $categoryId=$_GET["CategoryId"];
+    $categoryId=security($_GET["CategoryId"]);
     $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
     if ($deleteCategory==true) {
         go("../Category.php?confirm=1&categoryId=$categoryId");
@@ -215,9 +145,9 @@ if (isset($_POST["addproduct"]))
                      $productContent,
                      $categoryId));
      if ($addProduct>0) {
-         go("../ProductAdd.php?confirm=1");
+         go("../ProductAdd.php?confirm=add");
      }elseif ($addProduct<=0 ) {
-         go("../ProductAdd.php?confirm=0");
+         go("../ProductAdd.php?confirm=unadd");
      }
 }
 
@@ -232,8 +162,32 @@ if (isset($_POST["addcategory"]))
                      $categoryUniqid,
                      $categoryName));
      if ($addCategory>0) {
-         go("../CategoryAdd.php?confirm=1");
+         go("../CategoryAdd.php?confirm=add");
      }elseif ($addCategory<=0 ) {
-         go("../CategoryAdd.php?confirm=0");
+         go("../CategoryAdd.php?confirm=unadd");
      }
+}
+
+//Kategori Düzenleme
+if (isset($_POST["edit"]))
+{
+    if (isset($_GET["CategoryId"]) && isset($_POST["categoryUniqid"]) && isset($_POST["categoryName"])) {
+        
+        $categoryId=$_GET["CategoryId"];
+        $categoryUniqid=security($_POST["categoryUniqid"]);
+        $categoryName=security($_POST["categoryName"]);
+        $editCategory=$db->Update("UPDATE category SET
+                            CategoryUniqid=?,
+                            CategoryName=?
+                            WHERE CategoryId=?",array(
+                            $categoryUniqid,
+                            $categoryName,
+                            $categoryId
+                            ));
+        if ($editCategory>0) {
+            go("../Category.php");
+        }
+    }else {
+        go("../CategoryEdit.php?confirm=categoryediterror");
+    }
 }

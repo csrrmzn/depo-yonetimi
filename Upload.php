@@ -9,35 +9,16 @@ $db=new \vivense\db\Database();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Ürünler</h1>
+            <h1 class="m-0">Excel İle Ürün Yükleme</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="Index.php">Anasayfa</a></li>
-              <li class="breadcrumb-item active">Ürünler</li>
+              <li class="breadcrumb-item active">Excel İle Ürün Yükleme</li>
             </ol>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-12">
-        <ul class="nav nav-pills ml-2">
-            <li class="nav-item">
-                <form action="" method="POST">
-                    <select name="category" class="form-control">
-                        <?php
-                            $myQuery0=$db->getRows("SELECT * FROM category ");
-                                          foreach ($myQuery0 as $items0) {                   
-                        ?>
-                          <option value="<?=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
-                        <? } ?> 
-                    </select>
-            </li>
-            <li class="nav-item">
-                <button class="btn btn-primary" type="submit" name="categorysend">Ürünleri Listele</button>
-                </form>
-            </li>
-        </ul>
     </div>
    <section class="content">
       <div class="container-fluid">
@@ -45,38 +26,45 @@ $db=new \vivense\db\Database();
               <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <div class="card-tools">
-                  <ul class="nav nav-pills ml-auto">
-                  <li class="nav-item mr-5">
-                    <h6>
-                      <?php
+                <h6>
+                  <?php
                         if (@$_GET["confirm"]=="successful") {?>
                             <div class="alert alert-success">
-                              Excel Dosyası İndirildi
+                              Excel Dosyası Aktarıldı
                             </div>
                       <?php }elseif (@$_GET["confirm"]=="unsuccessful") { ?>
                             <div class="alert alert-danger">
-                              Excel Dosyası İndiriemedi
+                              Excel Dosyası Aktarılamadı
                             </div>
-                      <?php }?>
-                    </h6>
-                  </li>
+                    <?php }elseif (@$_GET["confirm"]=="error") { ?>
+                            <div class="alert alert-danger">
+                              Excel Dosyası Seçilemedi
+                            </div>
+                    <?php }?>
+                </h6>
+                <div class="card-tools">
+                  <div class="outer-container">
+                    <form action="operation/Export-ImportOperation.php" method="POST" name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+                  <div>
+                    <label>Excel Dosyasını Seç</label>
+                    <input type="file" name="file" id="file" accept=".xls,.xlsx">
+                    <button type="submit" id="submit" name="import" class="btn btn-success">Ürünleri Yükle</button>
+                  </div>
+                    </form>
+                </div>
+                  <!--<ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
-                      <form action="operation/ImportOperation.php" method="POST">
-                        <select name="category" class="form-control">
-                          <?php
-                            $myQuery0=$db->getRows("SELECT * FROM category ");
-                                          foreach ($myQuery0 as $items0) {                   
-                          ?>
-                          <option value="<?=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
-                          <? } ?> 
-                        </select>
+                        <form action="operation/Export-ImportOperation.php" method="POST" enctype="multipart/form-data">
+                            <div class="custom-file">
+                                <label class="custom-file-label" for="customFile">Excel Dosyasını Seç</label>
+                                <input type="file" name="file" id="file" accept=".xls,.xlsx" class="custom-file-label">
+                            </div>
                     </li>
                     <li class="nav-item">
-                      <button class="btn btn-success" type="submit" name="export">Excel İndir</button>
-                      </form>
+                            <button type="submit" name="ımport" class="btn btn-success">Veritabanına Aktar</button>
+                        </form>
                     </li>
-                  </ul>
+                  </ul>-->
                 </div>
               </div>
               <!-- /.card-header -->
@@ -93,15 +81,8 @@ $db=new \vivense\db\Database();
                   </tr>
                   </thead>
                   <?php
-                      if (!isset($_POST["categorysend"])) {
-                          $categoryId=1;             
-                      }else {
-                            $categoryId=security($_POST["category"]);
-                      }
                       $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON
-                                    product.CategoryId=category.CategoryId WHERE
-                                    product.CategoryId=?",array(
-                                    $categoryId));
+                                    product.CategoryId=category.CategoryId LIMIT 10");
                                     
                                     foreach ($myQuery as $items) {     
                   ?>

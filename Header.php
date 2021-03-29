@@ -65,6 +65,11 @@ go("Login.php");
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <div class="input-group input-group-sm">
+          <a href="MyAccount.php"><button name="myaccount" class="btn btn-warning btn mr-2">Hesabım</button></a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="input-group input-group-sm">
           <a href="Logout.php"><button name="logout" class="btn btn-danger btn">Güvenli Çıkış Yap</button></a>
         </div>
       </li>

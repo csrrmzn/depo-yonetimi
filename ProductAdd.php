@@ -21,11 +21,11 @@ include "SideBar.php";
     </section>
     <div class="col-md-6">
       <?php
-          if (@$_GET["confirm"]==1) { ?>
+          if (@$_GET["confirm"]=="add") { ?>
               <div class="alert alert-success">
                 Yeni Ürün Eklendi
               </div>
-          <?php }elseif (@$_GET["confirm"]==0) { ?>
+          <?php }elseif (@$_GET["confirm"]=="unadd") { ?>
             <div class="alert alert-success">
                 Yeni Ürün Eklenemedi Lütfen Tekrar Deneyiniz
             </div>
