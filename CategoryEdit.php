@@ -19,6 +19,13 @@ include "SideBar.php";
       </div>
     </section>
     <div class="col-md-6">
+    <?php
+      if (@$_GET["confirm"]==["categoryediterror"]) { ?>
+          <div>
+            Kategori Düzenlenemedi Lütfen Tekrar Deneyiniz
+          </div>
+    <?php } ?>
+    ?>
     </div>
     <section class="content">
       <div class="row">
@@ -36,7 +43,7 @@ include "SideBar.php";
                     foreach ($categoryEdit as $itemsValue) {
                     
             ?>
-            <form action="" method="POST">
+            <form action="operation/Operation.php" method="POST">
                 <div class="card-body">
                 <div class="form-group">
                     <label for="categoryUniqid">Kategori ID</label>
@@ -52,27 +59,6 @@ include "SideBar.php";
                 </div>
             </form>
             <?php } ?>
-            <?php
-                if (isset($_POST["edit"]))
-                {
-                    $categoryId=$_GET["CategoryId"];
-                    $categoryUniqid=security($_POST["categoryUniqid"]);
-                    $categoryName=security($_POST["categoryName"]);
-
-                    $editCategory=$db->Update("UPDATE category SET
-                                        CategoryUniqid=?,
-                                        CategoryName=?
-                                        WHERE CategoryId=?",array(
-                                        $categoryUniqid,
-                                        $categoryName,
-                                        $categoryId
-                                        ));
-                    if ($editCategory>0) {
-                        go("Category.php");
-                    }
-                    
-                }
-            ?>
           </div>
         </div>
       </div>

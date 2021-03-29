@@ -37,15 +37,6 @@ $db=new \vivense\db\Database();
                             ?>
                             </div>
                       <?}?>
-                      <?php
-                        /*if (@$_SESSION["deletecategoryconfirm"]==true) {?>
-                            <div class="alert alert-success">
-                            <?=$_SESSION["categorymessage"]." "."Numaralı Ürün Silindi";
-                              unset($_SESSION["deletecategoryconfirm"]);
-                              unset($_SESSION["categorymessage"]);
-                            ?>
-                            </div>
-                      <?}*/?>
                     </h6>
                 </div>
               </div>
@@ -116,4 +107,3 @@ $db=new \vivense\db\Database();
 
 <?php
 include "Footer.php";
-?>

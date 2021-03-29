@@ -21,7 +21,7 @@ accessBlock($value1,$value2,"Home.php");
           <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="MyAccount.php" class="d-block"><?php echo $_SESSION["username"];?></a>
+          <a href="MyAccount.php" class="d-block">Kullanıcı<br><?php echo $_SESSION["username"];?></a>
         </div>
       </div>
       <!-- SidebarSearch Form -->

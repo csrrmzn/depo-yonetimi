@@ -22,27 +22,64 @@ include "function/Function.php";
 <body class="hold-transition login-page">
 <div class="login-box">
 <?php
-  if (@$_GET["confirm"]=="okey") { ?>
+  @$get=$_GET["confirm"];
+  switch ($get)
+  {
+    case 'okey': ?>
       <div class="alert alert-success">
         Kayıt Oluşturuldu. Lütfen Giriş Yapınız
       </div>
-<?php }elseif (@$_GET["confirm"]=="empty") { ?>
+    <?php break;
+    case 'empty': ?>
       <div class="alert alert-danger">
         Lütfen Kullanıcı Adınızı ve Şifrenizi Boş Bırakmayınız
       </div>
-<?php }elseif (@$_GET["confirm"]=="error") { ?>
+    <?php break;
+    case 'error': ?>
       <div class="alert alert-danger">
         Kullanıcı Adınız veya Şifreniz Hatalı
       </div>
-<?php }elseif (@$_GET["confirm"]=="securityerror") { ?>
+    <?php break;
+    case 'securityerror': ?>
       <div class="alert alert-danger">
         Lütfen Güvenlik Adımını Doğrulayınız
       </div>
-<?php }elseif (@$_GET["confirm"]=="success") { ?>
+    <?php break;
+    case 'success': ?>
       <div class="alert alert-success">
         Güvenlik Adımı Başarılı!
       </div>
-<?php } ?>
+    <?php break;
+    case 'error': ?>
+      <div class="alert alert-danger">
+        Kullanıcı Adınız veya Şifreniz Hatalı
+      </div>
+    <?php break;
+    case 'updatepassword': ?>
+      <div class="alert alert-danger">
+        Şifreniz Güncellendi Lütfen Giriş Yapınız
+      </div>
+    <?php break;
+    case 'unupdatepassword': ?>
+      <div class="alert alert-danger">
+        Şifreniz Güncellenemedi! Lütfen Tekrar Deneyiniz
+      </div>
+    <?php break;
+    case 'deletemyaccount': ?>
+      <div class="alert alert-danger">
+        Hesabınız Silindi<br>
+        Aramızdan Ayrıldığınız İçin Üzgünüz..
+      </div>
+    <?php break;
+    case 'undeletemyaccount': ?>
+      <div class="alert alert-danger">
+        Hesabınız Silinemedi<br>
+        Giriş Ekranına Yönlendirildiniz
+      </div>
+    <?php break;
+    }
+?>
+
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="Login.php" class="h1"><b>Depo Yönetimi</b></a>
@@ -74,15 +111,6 @@ include "function/Function.php";
           </div>
         </div>
       </form>
-
-      <!--<div class="social-auth-links text-center mt-2 mb-3">
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>-->
       <p class="mb-1">
         <a href="NewPassword.php">Şifremi Unuttum!</a>
       </p>

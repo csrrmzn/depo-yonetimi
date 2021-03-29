@@ -116,7 +116,7 @@ include "SideBar.php";
                                     <th>Sıra</th>
                                     <th>Kategori ID</th>
                                     <th>Kategori Adı</th>
-                                    <th>Ürün Sayısır</th>
+                                    <th>Ürün Sayısı</th>
                                     </tr>
                                     </tfoot>
                                 </table>

@@ -49,3 +49,4 @@ function security($text)
     $text=strip_tags($text);
     return $text;
 }
+

@@ -71,7 +71,7 @@ include "function/Function.php";
           <input type="text" name="lastname" placeholder="Soyadınız" class="form-control">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-signature"></span>
             </div>
           </div>
         </div>
@@ -84,10 +84,18 @@ include "function/Function.php";
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="passwordclone" placeholder="Şifre Onayı" class="form-control" autocomplete="on">
+          <input type="password"  name="passwordclone" placeholder="Şifre Onayı" class="form-control" autocomplete="on">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="tel" maxlength="4" name="secretcode" placeholder="Kişisel Güvenlik Kodunuz" class="form-control" >
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-key"></span>
             </div>
           </div>
         </div>
@@ -100,7 +108,7 @@ include "function/Function.php";
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="tel" name="phonenumber" pattern="[0-9]{4}-[0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="Telefon Numaranız" class="form-control">
+          <input type="number" name="phonenumber" maxlength="10" placeholder="Telefon Numaranız" class="form-control">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-phone"></span>

@@ -59,25 +59,13 @@ go("Login.php");
         <a href="Index.php" class="nav-link">Anasayfa</a>
       </li>
     </ul>
+    <div class="col-md-8 text-center">
 
+    </div>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <div class="navbar-search-block">
-          <form class="form-inline" method="POST" action="Logout.php">
-            <div class="input-group input-group-sm">
-              <button name="logout" class="btn btn-danger btn">Güvenli Çıkış Yap</button>
-              <!---
-              <input class="form-control form-control-navbar" type="search" placeholder="Ara" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>-->
-            </div>
-          </form>
+        <div class="input-group input-group-sm">
+          <a href="Logout.php"><button name="logout" class="btn btn-danger btn">Güvenli Çıkış Yap</button></a>
         </div>
       </li>
     </ul>

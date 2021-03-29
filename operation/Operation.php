@@ -51,48 +51,53 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
 }
 */
 
-
-//Şifre Güncelleme İşlemi
+//Şifre Oluşturma İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && isset($_POST["newpasswordclone"]) && $_POST["newpassword"]==$_POST["newpasswordclone"])
 {
-    $username=security($_POST["name"]);
-    $password=security($_POST["newpassword"]);
-    $passwordClone=security($_POST["newpasswordclone"]);
+    if (isset($_POST["name"]) && isset($_POST["secretcode"]) && isset($_POST["newpassword"])==isset($_POST["newpasswordclone"]))
+    {
+        $username=security($_POST["name"]);
+        $secretcode=security($_POST["secretcode"]);
+        $password=security($_POST["newpassword"]);
+        $passwordClone=security($_POST["newpasswordclone"]);
 
-    if (empty($username) && empty($password) && empty($passwordClone) ) {
-        echo "Lütfen Tüm Bilgileri Doldurunuz.";
-        comeBack(3);
-    }else {
-        $addNewPassword=$db->Update('UPDATE users SET
-                            UserPassword=? WHERE UserName=?',
-                            array($password,$username));
-        if ($addNewPassword==true) {
-            echo $updatePassword="Şifreniz Güncellendi Giriş Ekranına Yönlendiriliyorsunuz"."<br>";
-            go("../Index.php",1);
-        }else {
-            echo $unupdatePassword="Şifreniz Güncellenemedi! Lütfen Tekrar Deneyiniz ";
-            comeBack(3);
+        $myQuery=$db->getColumn("SELECT UserSecretCode FROM users WHERE UserName=?",array($username));
+        $databaseSecretCode=$myQuery;
+
+         if ($secretcode==$databaseSecretCode)
+        {
+            $secretPass=md5(md5(sha1(sha1($password))));
+
+            $addNewPassword=$db->Update('UPDATE users SET
+                                    UserPassword=? WHERE UserName=?',
+                                    array($password,$username));
+                if ($addNewPassword==true) {
+                    go("Login.php?confirm=updatepassword");
+                }else {
+                    go("NewPassword.php?confirm=unupdatepassword");
+                }
+            
         }
     }
+    
 
 }
 
 //Hesap Silme İşlemi
-if (isset($_GET['UserId']))
+if (isset($_POST["deletemyaccount"]))
 {
-    $userıd=strip_tags($_GET["UserId"]);
+    if (!empty($_GET["userId"])) {
 
+        $userıd=security($_GET["userId"]);
         $deleteMyAccount=$db->Delete('DELETE FROM users WHERE
                             UserId=?',
                             array($userıd));
         if ($deleteMyAccount==true) {
-            echo $delete="Hesabınız Silindi Giriş Ekranına Yönlendiriliyorsunuz"."<br>";
-            go("../Login.php",3);
+            go("../Login.php?confirm=deletemyaccount");
         }else {
-            echo $undelete="Hesabınız Silinemedi Giriş Ekranına Yönlendiriliyorsunuz ";
-            comeBack(1);
+            go("../Login.php?confirm=undeletemyaccount");
         }
-
+    }    
 }
 
 //Ürün Silme
@@ -100,12 +105,79 @@ if ($_GET["ProductId"]) {
     $productId=$_GET["ProductId"];
     $deleteProduct=$db->Delete("DELETE FROM product WHERE ProductId=?",array($productId));
     if ($deleteProduct==true) {
-        /*$_SESSION["deleteproductconfirm"]=true;
-        $_SESSION["productmessage"]=$productId;*/
         go("../Product.php?confirm=1&productId=$productId");
     }else {
-       /* $_SESSION["producterrormessage"]=$productId;*/
         go("../Product.php?confirm=0&productId=$productId");
+    }
+}
+
+//Hesap Düzenleme İşlemi
+if (isset($_POST["editmyaccount"]))
+{
+    if (!empty(isset($_POST["newusername"])) && !empty(isset($_POST["newuserlastname"])) && !empty(isset($_POST["newuserpassword"])) &&
+        !empty(isset($_POST["newsecretcode"])) && !empty(isset($_POST["newuserphone"])) && !empty(isset($_POST["newuseremail"])) &&
+        !empty(isset($_POST["newuserbirtday"])))
+    {
+        $editusername=security($_POST["newusername"]);
+        $edituserlastname=security($_POST["newuserlastname"]);
+        $edituserpassword=security($_POST["newuserpassword"]);
+        $editusersecretcode=security($_POST["newusersecretcode"]);
+        $edituserphone=security($_POST["newuserphone"]);
+        $edituseremail=security($_POST["newuseremail"]);
+        $edituserbirtday=security($_POST["newuserbirtday"]);
+
+        $userıd=$_GET["userıd"];
+        $edituserpassword=base64_encode($edituserpassword);
+        $editMyAccount=$db->Update("UPDATE users SET
+                                    UserName=?,
+                                    UserLastname=?,
+                                    UserPassword=?,
+                                    UserSecretcode=?,
+                                    UserPhone=?,
+                                    UserEmail=?,
+                                    UserBirtday=? WHERE UserId=?",
+                                    array(
+                                    $editusername,
+                                    $edituserlastname,
+                                    $edituserpassword,
+                                    $editusersecretcode,
+                                    $edituserphone,
+                                    $edituseremail,
+                                    $edituserbirtday, $userıd));
+        if ($editMyAccount==true) {
+            go("../MyAccount.php?confirm=successful");
+        }else {
+            go("../MyAccount.php?confirm=unsuccessful");
+        }
+    }else {
+        go("../MyAccount.php?confirm=empty");
+    }
+
+}else {
+    go("../MyAccount.php?confirm=error");
+}
+
+//Kategori Düzenleme
+if (isset($_POST["edit"]))
+{
+    if (isset($_GET["CategoryId"]) && isset($_POST["categoryUniqid"]) && isset($_POST["categoryName"])) {
+        
+        $categoryId=$_GET["CategoryId"];
+        $categoryUniqid=security($_POST["categoryUniqid"]);
+        $categoryName=security($_POST["categoryName"]);
+        $editCategory=$db->Update("UPDATE category SET
+                            CategoryUniqid=?,
+                            CategoryName=?
+                            WHERE CategoryId=?",array(
+                            $categoryUniqid,
+                            $categoryName,
+                            $categoryId
+                            ));
+        if ($editCategory>0) {
+            go("Category.php");
+        }
+    }else {
+        go("../CategoryEdit.php?confirm=categoryediterror");
     }
 }
 
@@ -114,11 +186,8 @@ if ($_GET["CategoryId"]) {
     $categoryId=$_GET["CategoryId"];
     $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
     if ($deleteCategory==true) {
-        /*$_SESSION["deletecategoryconfirm"]=true;
-        $_SESSION["categorymessage"]=$categoryId;*/
         go("../Category.php?confirm=1&categoryId=$categoryId");
     }else {
-        /*$_SESSION["categoryerrormessage"]=$categoryId;*/
         go("../Category.php?confirm=0&categoryId=$categoryId");
     }
 }

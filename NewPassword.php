@@ -29,12 +29,20 @@ include "function/Function.php";
     <div class="card-body">
       <p class="login-box-msg"></p>
 
-      <form method="post" action="../operation/Operation.php">
+      <form method="post" action="operation/Operation.php">
         <div class="input-group mb-3">
           <input type="text" required="required" name="name" placeholder="Adınız" class="form-control">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="tel" required="required" name="secretcode" placeholder="Kişisel Güvenlik Kodunuz" class="form-control">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-key"></span>
             </div>
           </div>
         </div>
