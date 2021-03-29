@@ -112,11 +112,11 @@ if ($_GET["ProductId"]) {
 }
 
 //Hesap Düzenleme İşlemi
-if (isset($_POST["editmyaccount"]))
+if (isset($_POST["editmyaccount"]) && isset($_POST["newusername"]) && isset($_POST["newuserlastname"]) && isset($_POST["newsecretcode"]) &&
+    isset($_POST["newuserphone"]) && isset($_POST["newuseremail"]) && isset($_POST["newuserbirtday"]) )
 {
-    if (!empty(isset($_POST["newusername"])) && !empty(isset($_POST["newuserlastname"])) && !empty(isset($_POST["newuserpassword"])) &&
-        !empty(isset($_POST["newsecretcode"])) && !empty(isset($_POST["newuserphone"])) && !empty(isset($_POST["newuseremail"])) &&
-        !empty(isset($_POST["newuserbirtday"])))
+    if (!empty($_POST["newusername"]) && !empty($_POST["newuserlastname"]) && !empty($_POST["newuserpassword"]) && !empty($_POST["newsecretcode"]) &&    
+        !empty($_POST["newuserphone"]) && !empty($_POST["newuseremail"]) && !empty($_POST["newuserbirtday"]))
     {
         $editusername=security($_POST["newusername"]);
         $edituserlastname=security($_POST["newuserlastname"]);

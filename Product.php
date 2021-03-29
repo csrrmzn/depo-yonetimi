@@ -2,6 +2,7 @@
 include "Header.php";
 include "SideBar.php";
 $db=new \vivense\db\Database();
+
 ?>
 
 <div class="content-wrapper">
@@ -42,17 +43,6 @@ $db=new \vivense\db\Database();
                             ?>
                             </div>
                       <?}?>
-                      <!-- Session İşlemleri İle Yapılan Kontrol Kodları-->
-                      <?php
-                        /*if (@$_SESSION["deleteproductconfirm"]==true) {?>
-                            <div class="alert alert-success">
-                            <?=$_SESSION["productmessage"]." "."Numaralı Ürün Silindi";
-                              unset($_SESSION["deleteproductconfirm"]);
-                              unset($_SESSION["productmessage"]);
-                            ?>
-                            </div>
-                      <?}*/?>
-                      <!-- Session İşlemleri İle Yapılan Kontrol Kodları-->
                     </h6>
                   </li>
                     <li class="nav-item">

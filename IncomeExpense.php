@@ -33,7 +33,7 @@ $db=new \vivense\db\Database();
                                             $myQuery0=$db->getRows("SELECT * FROM category ");
                                                 foreach ($myQuery0 as $items0) {                   
                                         ?>
-                                        <option value="<?=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
+                                        <option value="<?=$items0->CategoryId; $ıd=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
                                         
                                         <? } ?>
                                         
@@ -45,9 +45,13 @@ $db=new \vivense\db\Database();
                                         </form>
                                     </li>
                                 <li>
+                                <form method="POST" action="Export.php">
                                     <div class="card-tools">
-                                        <button id="cmd" class="btn btn-success ">PDF İndir</button>
+                                        <a href="Export.php">
+                                        <button class="btn btn-success" name="export">Excel İndir</button>
+                                        </a>
                                     </div>
+                                </form>
                                 </li>
                                 </ul>
                             </div>

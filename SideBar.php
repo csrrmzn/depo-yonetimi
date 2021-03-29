@@ -50,12 +50,33 @@ accessBlock($value1,$value2,"Home.php");
             </a>
           </li>
           <li class="nav-item">
-            <a href="Product.php" class="nav-link ">
+            <a href="Product.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Ürünler
+                Ürün İşlemleri
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="Product.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ürünler</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="Import.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Toplu Ürün İndirme</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="Export.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Toplu Ürün Yükleme</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="Category.php" class="nav-link">
