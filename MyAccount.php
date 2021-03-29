@@ -88,7 +88,7 @@ $db=new \vivense\db\Database();
                     <td><?=$items->UserEmail;?></td>
                     <td><?=$items->UserBirtday;?></td>
                     <td >
-                    <a href="MyAccountEdit.php?userId=<?=$items->UserId;?>"><button class="btn btn-primary" >Düzenle</button></a>
+                    <!--<a href="MyAccountEdit.php?UserId=<?=$items->UserId;?>"><button class="btn btn-primary" >Düzenle</button></a>-->
                     <a href="operation/Operation.php?userId=<?=$items->UserId;?>" ><button class="btn btn-danger" name="deletemyaccount">Hesabımı Sil</button ></a>
                     </td>
                   </tr>
