@@ -79,7 +79,7 @@ $db=new \vivense\db\Database();
                   </thead>
                   <?php
                       if (!isset($_POST["categorysend"])) {
-                          $categoryId=1;             
+                          $categoryId=2;             
                       }else {
                             $categoryId=$_POST["category"];
                       }

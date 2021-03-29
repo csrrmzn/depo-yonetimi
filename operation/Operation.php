@@ -111,16 +111,7 @@ if ($_GET["ProductId"]) {
     }
 }
 
-//Kategori Silme
-if ($_GET["CategoryId"]) {
-    $categoryId=security($_GET["CategoryId"]);
-    $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
-    if ($deleteCategory==true) {
-        go("../Category.php?confirm=1&categoryId=$categoryId");
-    }else {
-        go("../Category.php?confirm=0&categoryId=$categoryId");
-    }
-}
+
 
 //Ürün Ekleme İşlemi
 if (isset($_POST["addproduct"]))
@@ -145,28 +136,15 @@ if (isset($_POST["addproduct"]))
                      $productContent,
                      $categoryId));
      if ($addProduct>0) {
-         go("../ProductAdd.php?confirm=add");
+         go("../ProductAdd.php?confirm=addproduct");
      }elseif ($addProduct<=0 ) {
-         go("../ProductAdd.php?confirm=unadd");
+         go("../ProductAdd.php?confirm=unaddproduct");
      }
+}else {
+    go("../ProductAdd.php?confirm=errorproduct");
 }
 
-//Kategori Ekleme İşlemi
-if (isset($_POST["addcategory"]))
- {
-     $categoryUniqid=security($_POST["categoryUniqid"]);
-     $categoryName=security($_POST["categoryName"]);
-     $addCategory=$db->Insert("INSERT INTO category SET
-                     CategoryUniqid=?,
-                     CategoryName=?",array(
-                     $categoryUniqid,
-                     $categoryName));
-     if ($addCategory>0) {
-         go("../CategoryAdd.php?confirm=add");
-     }elseif ($addCategory<=0 ) {
-         go("../CategoryAdd.php?confirm=unadd");
-     }
-}
+
 
 //Kategori Düzenleme
 if (isset($_POST["edit"]))

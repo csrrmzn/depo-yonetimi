@@ -20,15 +20,19 @@ include "SideBar.php";
     </div>
     <div class="col-md-6">
       <?php
-          if (@$_GET["confirm"]=="add") { ?>
+          if (@$_GET["confirm"]=="addcategory") { ?>
               <div class="alert alert-success">
                 Yeni Kategori Eklendi
               </div>
-          <?php }elseif (@$_GET["confirm"]=="unadd") { ?>
+          <?php }elseif (@$_GET["confirm"]=="unaddcategory") { ?>
             <div class="alert alert-success">
                 Yeni Kategori Eklenemedi Lütfen Tekrar Deneyiniz
             </div>
-         <?php } ?>
+         <?php }elseif (@$_GET["confirm"]=="errorcategory") { ?>
+            <div class="alert alert-danger">
+                Beklenmedik Bir Hata Oluştu
+            </div>
+        <?php } ?>
     </div>
    <section class="content">
       <div class="container-fluid">
@@ -40,27 +44,21 @@ include "SideBar.php";
                             <div class="card card-primary">
                                 <div class="card-header">
                                 <h3 class="card-title">Yeni Kategori</h3>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                    </button>
                                 </div>
-                                </div>
-                                <form action="operation/Operation.php" method="POST">
-                                <div class="card-body">
-                                <div class="form-group">
-                                    <label for="categoryUniqid">Kategori ID</label>
-                                    <input type="text" name="categoryUniqid" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="categoryName">Kategori Name</label>
-                                    <input type="text" name="categoryName" class="form-control" ></input>
-                                </div>
-                                <div class="col-md-12">
-                                    <a href="operation/Operation.php"><button type="button" name="addcategory" class="btn btn-success" data-card-widget="collapse" title="Collapse">Ekle</button></a>
-                                </div>
-                                </div>
+                                <form action="#" method="POST">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label >Kategori ID</label>
+                                            <input type="text" name="categoryuniqid" class="form-control"></input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label >Kategori Name</label>
+                                            <input type="text" name="categoryname" class="form-control" ></input>
+                                        </div>
+                                        <div class="col-md-12">
+                                        <button type="button" name="addcategory" class="btn btn-success" >Ekle</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -82,7 +80,7 @@ include "SideBar.php";
                                     <th>Sıra</th>
                                     <th>Kategori ID</th>
                                     <th>Kategori Adı</th>
-                                    <th>Alt Kategoriler</th>
+                                    <!--<th>Alt Kategoriler</th>-->
                                     </tr>
                                     </thead>
                                         <?php
@@ -96,7 +94,7 @@ include "SideBar.php";
                                     <th><?=$items->CategoryId?></th>
                                     <td><?=$items->CategoryUniqid?></td>
                                     <td><?=$items->CategoryName;?></td>
-                                    <td>
+                                    <!--<td>
                                         <form action="" method="POST">
                                             <select name="category" class="form-control">
                                             <?php
@@ -107,7 +105,7 @@ include "SideBar.php";
                                             <? } ?> 
                                             </select>
                                         </form>
-                                    </td>
+                                    </td>-->
                                     </tr>
                                     </tbody>
                                     <?php } ?>
@@ -116,7 +114,7 @@ include "SideBar.php";
                                     <th>Sıra</th>
                                     <th>Kategori ID</th>
                                     <th>Kategori Adı</th>
-                                    <th>Ürün Sayısı</th>
+                                    <!--<th>Ürün Sayısı</th>-->
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -130,8 +128,31 @@ include "SideBar.php";
     </div>
 </section>
 </div>
-
-
-
 <?php
 include "Footer.php";
+
+//Kategori Ekleme İşlemi
+if (isset($_POST["addcategory"]))
+{
+    
+    if (isset($_POST["categoryuniqid"]) && isset($_POST["categoryname"]))
+    {
+            $categoryUniqid=security($_POST["categoryuniqid"]);
+            $categoryName=security($_POST["categoryname"]);
+
+            $addCategory=$db->Insert("INSERT INTO category SET
+                            CategoryUniqid=?,
+                            CategoryName=?",array(
+                            $categoryUniqid,
+                            $categoryName));
+                            
+            if ($addCategory>0) {
+                go("CategoryAdd.php?confirm=addcategory");
+            }elseif ($addCategory<=0 ) {
+                go("CategoryAdd.php?confirm=unaddcategory");
+            }
+    }
+}else {
+
+    //go("CategoryAdd.php?confirm=errorcategory");
+}

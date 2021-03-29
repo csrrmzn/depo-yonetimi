@@ -36,7 +36,7 @@ $db=new \vivense\db\Database();
                             <?=$getCategoryId." "."Numaralı Kategori Silindi";
                             ?>
                             </div>
-                      <?}?>
+                      <?php }?>
                     </h6>
                 </div>
               </div>
@@ -66,7 +66,7 @@ $db=new \vivense\db\Database();
                   <td><?=$items->CategoryName;?></td>
                   <td><?=$recordsCategory;?></td>
                   <td>
-                    <form action="" method="POST">
+                    <form action="operation/Operation.php" method="POST">
                         <select name="category" class="form-control">
                           <?php
                             $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId WHERE category.CategoryId=?",array($number));
@@ -76,15 +76,27 @@ $db=new \vivense\db\Database();
                           <? } ?> 
                         </select>
                     </li>
-                    </form>
+                    
                   </td>
                   <td align="middle" >
-                  <a href="CategoryEdit.php?CategoryId=<?=$items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
-                  <a href="operation/Operation.php?=$items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                  <a href="CategoryEdit.php?CategoryId=<?=$items->CategoryId;;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
+                  <a href="Category.php?CategoryId=<?=$items->CategoryId;;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                   </td>
                   </tr>
                   </tbody>
-                  <?php } ?>
+                  <?php }
+                      //Kategori Silme
+                      if (@$_GET["CategoryId"]) {
+                          $categoryId=security($_GET["CategoryId"]);
+                          $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
+                          if ($deleteCategory==true) {
+                              go("Category.php?confirm=1&categoryId=$categoryId");
+                          }else {
+                              go("Category.php?confirm=0&categoryId=$categoryId");
+                          }
+                      }
+                  ?>
+                  </form>
                   <tfoot>
                   <tr>
                   <th>Sıra</th>
@@ -97,7 +109,6 @@ $db=new \vivense\db\Database();
                   </tfoot>
                 </table>
               </div>
-              <!-- /.card-body -->
             </div>
             </div>
         </div>
