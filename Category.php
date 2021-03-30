@@ -29,14 +29,22 @@ $db=new \vivense\db\Database();
                 <div class="card-tools col-md-6">
                     <h6>
                       <?php
-                        if (@$_GET["confirm"]==1 && $_GET["categoryId"]) {
+                        if (isset($_GET["confirm"])==1 && isset($_GET["categoryId"])) {
                             $getCategoryId=$_GET["categoryId"];
                           ?>
                             <div class="alert alert-success">
-                            <?=$getCategoryId." "."Numaralı Kategori Silindi";
+                            <?php echo $getCategoryId." "."Numaralı Kategori Silindi";
                             ?>
                             </div>
-                      <?php }?>
+                      <?php }elseif (isset($_GET["confirm"])=="categoryedit0") { ?>
+                            <div class="alert alert-danger">
+                              Kategori Düzenlenemedi
+                            </div>
+                      <?php }elseif (isset($_GET["confirm"])=="categoryedit1") { ?>
+                            <div class="alert alert-success">
+                              Kategori Düzenlendi 
+                            </div>
+                      <?php } ?>
                     </h6>
                 </div>
               </div>
@@ -48,7 +56,6 @@ $db=new \vivense\db\Database();
                   <th>Kategori ID</th>
                   <th>Kategori Adı</th>
                   <th>Kategoriye Ait Ürün Sayısı</th>
-                  <th>Alt Kategoriler</th>
                   <th>İşlemler</th>
                   </tr>
                   </thead>
@@ -61,41 +68,17 @@ $db=new \vivense\db\Database();
                     ?>
                   <tbody>
                   <tr>
-                  <th><?=$items->CategoryId?></th>
-                  <td><?=$items->CategoryUniqid?></td>
-                  <td><?=$items->CategoryName;?></td>
-                  <td><?=$recordsCategory;?></td>
-                  <td>
-                    <form action="operation/Operation.php" method="POST">
-                        <select name="category" class="form-control">
-                          <?php
-                            $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId WHERE category.CategoryId=?",array($number));
-                                          foreach ($subCategory as $itemsSubCategory) {                   
-                          ?>
-                          <option value="<?=$itemsSubCategory->SubCategoryId;?>"><?=$itemsSubCategory->SubCategoryName; ?></option>
-                          <? } ?> 
-                        </select>
-                    </li>
-                    
-                  </td>
+                  <th><?php echo $items->CategoryId;?></th>
+                  <td><?php echo $items->CategoryUniqid;?></td>
+                  <td><?php echo $items->CategoryName;?></td>
+                  <td><?php echo $recordsCategory;?></td>
                   <td align="middle" >
-                  <a href="CategoryEdit.php?CategoryId=<?=$items->CategoryId;;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
-                  <a href="Category.php?CategoryId=<?=$items->CategoryId;;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                  <a href="CategoryEdit.php?CategoryId=<?php echo $items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
+                  <a href="operation/Operation.php?CategoryId=<?php echo $items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                   </td>
                   </tr>
                   </tbody>
-                  <?php }
-                      //Kategori Silme
-                      if (@$_GET["CategoryId"]) {
-                          $categoryId=security($_GET["CategoryId"]);
-                          $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
-                          if ($deleteCategory==true) {
-                              go("Category.php?confirm=1&categoryId=$categoryId");
-                          }else {
-                              go("Category.php?confirm=0&categoryId=$categoryId");
-                          }
-                      }
-                  ?>
+                  <?php } ?>
                   </form>
                   <tfoot>
                   <tr>
@@ -103,7 +86,6 @@ $db=new \vivense\db\Database();
                   <th>Kategori ID</th>
                   <th>Kategori Adı</th>
                   <th>Kategoriye Ait Ürün Sayısı</th>
-                  <th>Alt Kategoriler</th>
                   <th>İşlemler</th>
                   </tr>
                   </tfoot>
@@ -115,6 +97,20 @@ $db=new \vivense\db\Database();
       </div>
     </section>
 </div>
+
+                 <!-- <td>
+                    <form action="operation/Operation.php" method="POST">
+                        <select name="category" class="form-control">
+                         // <?php 
+                         //   $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId   // WHERE category.CategoryId=?",array($number));
+                         //                 foreach ($subCategory as $itemsSubCategory) {                   
+                         // ?>
+                          <option value="<?php echo $itemsSubCategory->SubCategoryId;?>"><?php echo $itemsSubCategory->SubCategoryName; ?></option>
+                          <?php // }  ?> 
+                        </select>
+                    </li>
+                    
+                  </td> -->
 
 <?php
 include "Footer.php";

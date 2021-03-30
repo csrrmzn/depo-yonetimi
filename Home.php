@@ -36,7 +36,7 @@ $db=new \vivense\db\Database();
               
             ?>
               <div class="inner">
-                <h3><?=$recordsProdcut;?></h3>
+                <h3><?php echo $recordsProdcut;?></h3>
 
                 <h4>Ürün</h4>
               </div>
@@ -49,7 +49,7 @@ $db=new \vivense\db\Database();
           <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
               <div class="inner">
-                <h3><?=$recordsCategory;?></h3>
+                <h3><?php echo $recordsCategory;?></h3>
 
                 <h4>Kategori</h4>
               </div>
@@ -62,7 +62,7 @@ $db=new \vivense\db\Database();
           <div class="col-lg-3 col-6">
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?=$recordsPPP;?>₺</h3>
+                <h3><?php echo $recordsPPP;?>₺</h3>
 
                 <h4>Toplam Maliyet</h4>
               </div>
@@ -75,7 +75,7 @@ $db=new \vivense\db\Database();
           <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?=$sum;?>₺</h3>
+                <h3><?php echo $sum;?>₺</h3>
 
                 <h4>Toplam Kâr/Zarar</h4>
               </div>

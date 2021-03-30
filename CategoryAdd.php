@@ -45,7 +45,7 @@ include "SideBar.php";
                                 <div class="card-header">
                                 <h3 class="card-title">Yeni Kategori</h3>
                                 </div>
-                                <form action="#" method="POST">
+                                <form action="operation/Operation.php" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label >Kategori ID</label>
@@ -62,6 +62,9 @@ include "SideBar.php";
                                 </form>
                             </div>
                         </div>
+                        <?php
+                            
+                        ?>
                         <div class="col-md-6">
                             <div class="card card-secondary">
                                 <div class="card-header">
@@ -91,9 +94,9 @@ include "SideBar.php";
                                         ?>
                                     <tbody>
                                     <tr>
-                                    <th><?=$items->CategoryId?></th>
-                                    <td><?=$items->CategoryUniqid?></td>
-                                    <td><?=$items->CategoryName;?></td>
+                                    <th><?php echo $items->CategoryId?></th>
+                                    <td><?php echo $items->CategoryUniqid?></td>
+                                    <td><?php echo $items->CategoryName;?></td>
                                     <!--<td>
                                         <form action="" method="POST">
                                             <select name="category" class="form-control">
@@ -101,8 +104,8 @@ include "SideBar.php";
                                                 $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId WHERE category.CategoryId=?",array($number));
                                                             foreach ($subCategory as $itemsSubCategory) {                   
                                             ?>
-                                            <option value="<?=$itemsSubCategory->SubCategoryId;?>"><?=$itemsSubCategory->SubCategoryName; ?></option>
-                                            <? } ?> 
+                                            <option value="<?php echo $itemsSubCategory->SubCategoryId;?>"><?php echo $itemsSubCategory->SubCategoryName; ?></option>
+                                            <?php } ?> 
                                             </select>
                                         </form>
                                     </td>-->
@@ -130,29 +133,3 @@ include "SideBar.php";
 </div>
 <?php
 include "Footer.php";
-
-//Kategori Ekleme İşlemi
-if (isset($_POST["addcategory"]))
-{
-    
-    if (isset($_POST["categoryuniqid"]) && isset($_POST["categoryname"]))
-    {
-            $categoryUniqid=security($_POST["categoryuniqid"]);
-            $categoryName=security($_POST["categoryname"]);
-
-            $addCategory=$db->Insert("INSERT INTO category SET
-                            CategoryUniqid=?,
-                            CategoryName=?",array(
-                            $categoryUniqid,
-                            $categoryName));
-                            
-            if ($addCategory>0) {
-                go("CategoryAdd.php?confirm=addcategory");
-            }elseif ($addCategory<=0 ) {
-                go("CategoryAdd.php?confirm=unaddcategory");
-            }
-    }
-}else {
-
-    //go("CategoryAdd.php?confirm=errorcategory");
-}

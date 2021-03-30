@@ -19,13 +19,6 @@ include "SideBar.php";
       </div>
     </section>
     <div class="col-md-6">
-    <?php
-      if (@$_GET["confirm"]==["categoryediterror"]) { ?>
-          <div>
-            Kategori Düzenlenemedi Lütfen Tekrar Deneyiniz
-          </div>
-    <?php } ?>
-    ?>
     </div>
     <section class="content">
       <div class="row">
@@ -38,27 +31,61 @@ include "SideBar.php";
               </div>
             </div>
             <?php
+              if (isset($_GET["CategoryId"])) {
                 $categoryId=$_GET["CategoryId"];
                 $categoryEdit=$db->getRows("SELECT * FROM category  WHERE CategoryId=?",array("$categoryId"));
                     foreach ($categoryEdit as $itemsValue) {
+              }
                     
             ?>
-            <form action="operation/Operation.php" method="POST">
+            <form action="" method="POST">
                 <div class="card-body">
                 <div class="form-group">
                     <label for="categoryUniqid">Kategori ID</label>
-                    <input type="text" value="<?=$itemsValue->CategoryUniqid;?>" required="required" name="categoryUniqid" class="form-control">
+                    <input type="text" value="<?php echo $itemsValue->CategoryUniqid;?>" required="required" name="categoryUniqid" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="categoryName">Kategori Adı</label>
-                    <input type="text" value="<?=$itemsValue->CategoryName;?>" required="required" name="categoryName" class="form-control">
+                    <input type="text" value="<?php echo $itemsValue->CategoryName;?>" required="required" name="categoryName" class="form-control">
                 </div>
                 <div>
+                <a href="operation/Operation.php?CategoryId=<?php echo $itemsValue->CategoryId;?>">
                 <button type="submit" name="edit" class="btn btn-success float-right">Güncelle</button>
+                </a>
                 </div>
                 </div>
             </form>
-            <?php } ?>
+            <?php }
+            
+            //Kategori Düzenleme
+              if (isset($_POST["edit"]))
+              {
+                  if (isset($_GET["CategoryId"]) && isset($_POST["categoryUniqid"]) && isset($_POST["categoryName"])) {
+                      
+                      
+
+                      $categoryUniqid=security($_POST["categoryUniqid"]);
+                      $categoryName=security($_POST["categoryName"]);
+                      $categoryId=security($_GET["CategoryId"]);
+
+                      $editCategory=$db->Update("UPDATE category SET
+                                          CategoryUniqid=?,
+                                          CategoryName=?
+                                          WHERE CategoryId=?",
+                                          array(
+                                          $categoryUniqid,
+                                          $categoryName,
+                                          $categoryId
+                                          ));
+
+                      if ($editCategory==true) {
+                          go("Category.php?confirm=categoryedit1");
+                      }
+                  }else {
+                      go("Category.php?confirm=categoryedit0");
+                  }
+              }
+            ?>
           </div>
         </div>
       </div>

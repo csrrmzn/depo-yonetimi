@@ -15,6 +15,8 @@ if (isset($_POST["export"]) && isset($_POST["category"]))
                                     product.CategoryId=category.CategoryId WHERE
                                     product.CategoryId=?",array($categoryId));
 
+    
+
         /* TANIMLAMALAR */
         $columns=array();
         $data=array();
@@ -24,33 +26,40 @@ if (isset($_POST["export"]) && isset($_POST["category"]))
         Örneğin; Kolon 4'ün verilerinde nokta değilde virgül görülmesini istiyorsanız
         ilgili kolonun array key numarasını belirtmelisiniz. İlk kolonun key numarası 0'dır.
         */
-        $replaceDotCol=array(3); 
-        
+        $replaceDotCol=array(); 
+        foreach ($myQuery as $items) {
+            $productUniqid=$items->ProductUniqid;
+            $productName=$items->ProductName;
+            $productPurchase=$items->ProductPurchasePrice;
+            $productSell=$items->ProductSellPrice;
+            $productContent=$items->ProductContent;
+            $categoryName=$items->CategoryName;
+            $subCategoryId=$items->SubCategoryId;
 
         /* Sütun Başlıkları */
         $columns=
         [
-            'ProductUniqid',
-            'ProductName',
-            'ProductPurchasePrice',
-            'ProductSellPrice',
-            'ProductContent',
-            'CategoryId',
-            'SubCategoryId'
+            "ProductUniqid",
+            "ProductName",
+            "ProductPurchasePrice",
+            "ProductSellPrice",
+            "ProductContent",
+            "CategoryId",
+            "SubCategoryId"
         ];
         
-        foreach ($myQuery as $items) {
+        
             /* Satır Verileri */
             $data[]=
-            [
-            "$items->ProductUniqid",
-            "$items->ProductName",
-            "$items->ProductPurchasePrice",
-            "$items->ProductSellPrice",
-            "$items->ProductContent",
-            "$items->CategoryName",
-            "$items->SubCategoryName"
-            ];
+            array(
+            "$productUniqid",
+            "$productName",
+            "$productPurchase",
+            "$productSell",
+            "$productContent",
+            "$categoryName",
+            "$subCategoryId"
+            );
         }
         $name=uniqid(true);
         exportExcel("Ürünler".$name,$columns,$data,$replaceDotCol);

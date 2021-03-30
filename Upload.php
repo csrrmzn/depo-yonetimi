@@ -96,7 +96,7 @@ $db=new \vivense\db\Database();
                     <td><?=$items->CategoryName;?></td>
                   </tr>
                   </tbody>
-                  <? } ?>
+                  <?php } ?>
                   
                   <tfoot>
                   <tr>

@@ -33,9 +33,9 @@ $db=new \vivense\db\Database();
                                             $myQuery0=$db->getRows("SELECT * FROM category ");
                                                 foreach ($myQuery0 as $items0) {                   
                                         ?>
-                                        <option value="<?=$items0->CategoryId; $ıd=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
+                                        <option value="<?php echo $items0->CategoryId; $ıd=$items0->CategoryId;?>"><?php echo $items0->CategoryName; ?></option>
                                         
-                                        <? } ?>
+                                        <?php } ?>
                                         
                                         </select>
                                         
@@ -80,16 +80,16 @@ $db=new \vivense\db\Database();
                                 ?>                
                             <tbody>
                             <tr>
-                                <td><?=$items->ProductUniqid;?></td>
-                                <td><?=$items->ProductName;?></td>
-                                <td><?=$items->ProductPurchasePrice;?></td>
-                                <td><?=$items->ProductSellPrice;?></td>
+                                <td><?php echo $items->ProductUniqid;?></td>
+                                <td><?php echo $items->ProductName;?></td>
+                                <td><?php echo $items->ProductPurchasePrice;?></td>
+                                <td><?php echo $items->ProductSellPrice;?></td>
                                 <td style="width: 12%;">
-                                <a href="operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                                <a href="operation/Operation.php?ProductId=<?php echo $items->ProductId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                                 </td>
                             </tr>
                             </tbody>
-                            <? } ?>
+                            <?php } ?>
                             <tfoot>
                             <tr>
                                 <th>Ürün ID</th>

@@ -68,7 +68,7 @@ include "SideBar.php";
                             foreach ($category as $categorySelect) {                   
                         ?>
                             <option value="<?=$categorySelect->CategoryId;?>" selected="<?=$itemsValue->CategoryId;?>"><?=$categorySelect->CategoryName;?></option>  
-                        <? } ?>
+                        <?php } ?>
                     </select>
                 </div>
                 <div>
@@ -76,7 +76,7 @@ include "SideBar.php";
                 </div>
                 </div>
             </form>
-            <? } ?>
+            <?php } ?>
             <?php
                 if (isset($_POST["edit"]))
                 {

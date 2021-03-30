@@ -21,12 +21,12 @@ include "SideBar.php";
     </section>
     <div class="col-md-6">
       <?php
-          if (@$_GET["confirm"]=="add") { ?>
+          if (isset($_GET["Confirm"]) && $_GET["Confirm"]=="addproduct1") { ?>
               <div class="alert alert-success">
                 Yeni Ürün Eklendi
               </div>
-          <?php }elseif (@$_GET["confirm"]=="unadd") { ?>
-            <div class="alert alert-success">
+          <?php }elseif (isset($_GET["Confirm"]) && $_GET["Confirm"]=="unaddproduct0") { ?>
+            <div class="alert alert-danger">
                 Yeni Ürün Eklenemedi Lütfen Tekrar Deneyiniz
             </div>
          <?php } ?>
@@ -73,11 +73,11 @@ include "SideBar.php";
                             foreach ($category as $categorySelect) {                   
                         ?>
                           <option value="<?=$categorySelect->CategoryId;?>"><?=$categorySelect->CategoryName;?></option>  
-                        <? } ?>
+                        <?php } ?>
                     </select>
                 </div>
                 <div>
-                <a href="operation/Operation.php"><button type="submit" name="addproduct" class="btn btn-success float-right">Ekle</button></a>
+                <button type="submit" name="addproduct" class="btn btn-success float-right">Ekle</button>
                 </div>
                 </div>
             </form>

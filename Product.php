@@ -39,10 +39,9 @@ $db=new \vivense\db\Database();
                             $getProductId=$_GET["productId"];
                           ?>
                             <div class="alert alert-success">
-                            <?=$getProductId." "."Numaralı Ürün Silindi";
-                            ?>
+                            <?php echo $getProductId." "."Numaralı Ürün Silindi"; ?>
                             </div>
-                      <?}?>
+                      <?php }?>
                     </h6>
                   </li>
                     <li class="nav-item">
@@ -53,7 +52,7 @@ $db=new \vivense\db\Database();
                                           foreach ($myQuery0 as $items0) {                   
                           ?>
                           <option value="<?=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
-                          <? } ?> 
+                          <?php } ?> 
                         </select>
                     </li>
                     <li class="nav-item">
@@ -88,8 +87,7 @@ $db=new \vivense\db\Database();
                                     product.CategoryId=?",array(
                                     $categoryId));
                                     
-                                    foreach ($myQuery as $items) {     
-                  ?>
+                                    foreach($myQuery as $items) { ?>
                   <tbody>
                   <tr>
                     <td><?=$items->ProductUniqid;?></td>
@@ -99,12 +97,12 @@ $db=new \vivense\db\Database();
                     <td><?=$items->ProductContent;?></td>
                     <td><?=$items->CategoryName;?></td>
                     <td style="width: 12%;">
-                    <a href="ProductEdit.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
-                    <a href="operation/Operation.php?ProductId=<?=$items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
+                    <a href="ProductEdit.php?ProductId=<?php echo $items->ProductId;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
+                    <a href="operation/Operation.php?Product=1&ProductId=<?php echo $items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
                     </td>
                   </tr>
                   </tbody>
-                  <? } ?>
+                  <?php } ?>
                   
                   <tfoot>
                   <tr>
@@ -119,7 +117,6 @@ $db=new \vivense\db\Database();
                   </tfoot>
                 </table>
               </div>
-              <!-- /.card-body -->
             </div>
             </div>
         </div>
@@ -128,3 +125,4 @@ $db=new \vivense\db\Database();
 </div>
 <?php
 include "Footer.php";
+?>
