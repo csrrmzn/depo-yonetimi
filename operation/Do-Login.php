@@ -1,10 +1,7 @@
 <?php
 include "../db/Database.class.php";
 include "../function/Function.php";
-$db=new \vivense\db\Database();
-$value1=basename($_SERVER["PHP_SELF"]);
-$value2=basename(__FILE__);
-accessBlock($value1,$value2,"../Home.php");
+
 
 //Giriş İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST["g-recaptcha-response"]) )

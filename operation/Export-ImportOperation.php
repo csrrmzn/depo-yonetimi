@@ -5,9 +5,7 @@ include "../function/Function.php";
 require_once('../vendor/php-excel-reader/excel_reader2.php');
 require_once('../vendor/SpreadsheetReader.php');
 $db=new \vivense\db\Database();
-$value1=basename($_SERVER["PHP_SELF"]);
-$value2=basename(__FILE__);
-accessBlock($value1,$value2,"../Home.php");
+
 
 //Toplu Ürün İndirme
 if (isset($_POST["export"]) && isset($_POST["category"]))

@@ -2,9 +2,7 @@
 include "../db/Database.class.php";
 include "../function/Function.php";
 $db=new \vivense\db\Database();
-$value1=basename($_SERVER["PHP_SELF"]);
-$value2=basename(__FILE__);
-accessBlock($value1,$value2,"../Home.php");
+
 
 
 
