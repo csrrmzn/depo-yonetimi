@@ -9,15 +9,15 @@ $db=new \vivense\db\Database();
     if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["edit"]))
     {
         
-        $editusername=$_POST["new_username"];
-        $edituserlastname=$_POST["new_userlastname"];
-        $edituserpassword=$_POST["new_userpassword"];
-        $editusersecretcode=$_POST["new_usersecretcode"];
-        $edituserphone=$_POST["new_userphone"];
-        $edituseremail=$_POST["new_useremail"];
-        $edituserbirtday=$_POST["new_userbirtday"];
+        $editusername=security($_POST["new_username"]);
+        $edituserlastname=security($_POST["new_userlastname"]);
+        $edituserpassword=security($_POST["new_userpassword"]);
+        $editusersecretcode=security($_POST["new_usersecretcode"]);
+        $edituserphone=security($_POST["new_userphone"]);
+        $edituseremail=security($_POST["new_useremail"]);
+        $edituserbirtday=security($_POST["new_userbirtday"]);
 
-        $userıd=@$_GET["Id"];
+        $userıd=@security($_GET["Id"]);
         $edituserpassword=base64_encode($edituserpassword);
         $editMyAccount=$db->Update('UPDATE users SET UserName=?,
                                     UserLastname=?,

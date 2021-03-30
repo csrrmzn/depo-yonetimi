@@ -64,7 +64,7 @@ $db=new \vivense\db\Database();
               <div class="inner">
                 <h3><?php echo $recordsPPP;?>₺</h3>
 
-                <h4>Toplam Maliyet</h4>
+                <h4>Toplam Alış Fiyatı</h4>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

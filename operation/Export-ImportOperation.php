@@ -36,6 +36,7 @@ if (isset($_POST["export"]) && isset($_POST["category"]))
             $productContent=$items->ProductContent;
             $categoryName=$items->CategoryName;
             $subCategoryId=$items->SubCategoryId;
+            
 
         /* Sütun Başlıkları */
         $columns=

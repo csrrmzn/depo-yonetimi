@@ -84,8 +84,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addCategory"]))
     if (isset($_POST["category_uniqid"]) && isset($_POST["category_name"]))
     {
         
-            $categoryUniqid=$_POST["category_uniqid"];
-            $categoryName=$_POST["category_name"];
+            $categoryUniqid=security($_POST["category_uniqid"]);
+            $categoryName=security($_POST["category_name"]);
             $addCategory=$db->Insert("INSERT INTO category SET
                             CategoryUniqid=?,
                             CategoryName=?",array(
