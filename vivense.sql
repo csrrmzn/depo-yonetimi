@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 29 Mar 2021, 22:27:00
--- Sunucu sürümü: 10.4.17-MariaDB
--- PHP Sürümü: 7.4.14
+-- Üretim Zamanı: 30 Mar 2021, 15:44:57
+-- Sunucu sürümü: 10.4.18-MariaDB
+-- PHP Sürümü: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,9 +38,12 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`CategoryId`, `CategoryUniqid`, `CategoryName`) VALUES
-(1, '603539b085b7a', 'Ekran Kartları'),
+(1, '603539b085b7z', 'Ekran Kartları'),
 (2, '603539b085b7a', 'Ekranlar'),
-(3, '60355d8el1b7a', 'Bilgisayar Ekipmanları');
+(3, '60355d8el1b7a', 'Bilgisayar Ekipmanları'),
+(4, '603539b085b7l', 'Oyuncu Masaları'),
+(5, '603539b085b7t', 'Ekran Kartları'),
+(6, '60355d8el1b7d', 'Bilgisayar Aksesuarları');
 
 -- --------------------------------------------------------
 
@@ -64,63 +67,49 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`ProductId`, `ProductUniqid`, `ProductName`, `ProductPurchasePrice`, `ProductSellPrice`, `ProductContent`, `CategoryId`, `SubCategoryId`) VALUES
-(6, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(7, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(8, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(13, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(14, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(15, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(16, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(18, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(20, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(21, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(22, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(23, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(24, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(26, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(28, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(29, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(30, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(31, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(32, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(34, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(36, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(37, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(38, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(39, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(40, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(42, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(44, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(45, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(46, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(47, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(48, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(50, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(52, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(53, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(54, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(55, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(57, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(59, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(60, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(61, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(62, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(63, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(65, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(67, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(68, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(69, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(70, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(71, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(73, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(74, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 1, 1),
-(75, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 2, 1),
-(76, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(77, '603539c7c4758', 'Roundfix', 100.55, 10.54, '', 3, 1),
-(78, '4b3403665fea2', 'Tamphomedd', 98.55, 10.54, '', 3, 1),
-(79, '123456123456', 'Asus', 50.00, 70.00, '', 2, 1),
-(84, '1425h0l6355', 'Test', 52.00, 68.52, 'tanıtım', 1, 1),
-(85, '1425h0l6355', 'Test', 52.00, 68.52, 'tanıtım', 1, 1);
+(88, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 1, 0),
+(89, 'lm152452200102', 'Asus Laptop', 500.00, 1000.00, 'Laptop', 1, 0),
+(90, 'lm152452200102', 'Klavye', 320.00, 540.00, 'Gaming', 1, 0),
+(91, 'lm152452200102', 'RGB Klavye', 150.00, 300.00, 'Klavye', 1, 0),
+(92, '60353sd5c4758', 'Telefon', 1500.00, 3000.00, 'Genel Kullanılır', 1, 0),
+(93, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 1, 0),
+(95, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 1, 0),
+(96, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 3, 0),
+(97, 'lm152452200102', 'Asus Laptop', 500.00, 1000.00, 'Laptop', 3, 0),
+(98, 'lm152452200102', 'Klavye', 320.00, 540.00, 'Gaming', 3, 0),
+(99, 'lm152452200102', 'RGB Klavye', 150.00, 300.00, 'Klavye', 3, 0),
+(100, '60353sd5c4758', 'Telefon', 1500.00, 3000.00, 'Genel Kullanılır', 3, 0),
+(101, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 3, 0),
+(102, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 3, 0),
+(103, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 2, 0),
+(104, 'lm152452200102', 'Asus Laptop', 500.00, 1000.00, 'Laptop', 2, 0),
+(105, 'lm152452200102', 'Klavye', 320.00, 540.00, 'Gaming', 2, 0),
+(106, 'lm152452200102', 'RGB Klavye', 150.00, 300.00, 'Klavye', 2, 0),
+(107, '60353sd5c4758', 'Telefon', 1500.00, 3000.00, 'Genel Kullanılır', 2, 0),
+(108, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 2, 0),
+(109, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 2, 0),
+(110, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 2, 0),
+(111, 'lm152452200102', 'Asus Laptop', 500.00, 1000.00, 'Laptop', 2, 0),
+(112, 'lm152452200102', 'Klavye', 320.00, 540.00, 'Gaming', 2, 0),
+(113, 'lm152452200102', 'RGB Klavye', 150.00, 300.00, 'Klavye', 2, 0),
+(114, '60353sd5c4758', 'Telefon', 1500.00, 3000.00, 'Genel Kullanılır', 2, 0),
+(115, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 2, 0),
+(116, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 2, 0),
+(117, 'lm152452200102', 'Klavye', 320.00, 540.00, 'Gaming', 4, 0),
+(118, 'lm152452200102', 'RGB Klavye', 150.00, 300.00, 'Klavye', 4, 0),
+(119, '60353sd5c4758', 'Telefon', 1500.00, 3000.00, 'Genel Kullanılır', 4, 0),
+(120, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 4, 0),
+(121, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 4, 0),
+(122, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 5, 0),
+(123, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 5, 0),
+(124, 'lm152452200102', 'Klavye', 320.00, 540.00, 'Gaming', 5, 0),
+(125, 'lm152452200102', 'RGB Klavye', 150.00, 300.00, 'Klavye', 5, 0),
+(126, '60353sd5c4758', 'Telefon', 1500.00, 3000.00, 'Genel Kullanılır', 5, 0),
+(127, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 5, 0),
+(128, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 5, 0),
+(129, '60353sd5c4758', 'Telefon', 1500.00, 3000.00, 'Genel Kullanılır', 6, 0),
+(130, '603k39c7c4758', 'Mause Pad', 150.00, 250.00, 'Ortopedik Mause Pad', 6, 0),
+(131, 'lm152452200102', 'Asus Fan', 50.00, 70.00, 'fan', 6, 0);
 
 -- --------------------------------------------------------
 
@@ -156,7 +145,7 @@ CREATE TABLE `users` (
   `UserName` text COLLATE utf8_turkish_ci NOT NULL,
   `UserLastname` text COLLATE utf8_turkish_ci NOT NULL,
   `UserPassword` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
-  `UserSecretCode` int(4) NOT NULL,
+  `UserSecretCode` int(4) NOT NULL DEFAULT 1111,
   `UserPhone` int(11) NOT NULL,
   `UserEmail` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
   `UserBirtday` int(11) NOT NULL,
@@ -169,7 +158,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `UserLastname`, `UserPassword`, `UserSecretCode`, `UserPhone`, `UserEmail`, `UserBirtday`, `UserConfirm`, `registration_time`) VALUES
-(20, 'aslı', 'enver', 'ZW52ZXI=', 4455, 2147483647, 'asli@gmail.com', 1975, 1, '2021-03-29 00:39:22'),
 (21, 'admin', 'admin', 'YWRtaW4=', 0, 2147483647, 'admin@gmail.com', 1987, 1, '2021-03-29 22:54:02');
 
 --
@@ -208,13 +196,13 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `category`
 --
 ALTER TABLE `category`
-  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product`
 --
 ALTER TABLE `product`
-  MODIFY `ProductId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `ProductId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `sub_category`
@@ -226,7 +214,7 @@ ALTER TABLE `sub_category`
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
