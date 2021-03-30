@@ -1,7 +1,7 @@
 <?php
 include "../db/Database.class.php";
 include "../function/Function.php";
-
+$db=new \vivense\db\Database();
 
 //Giriş İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST["g-recaptcha-response"]) )
