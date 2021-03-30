@@ -1,10 +1,4 @@
 <?php
-if (isset($_SESSION["LogedIn"])!=true)
-{
-go("../Login.php");
-}else {
-    go("../Home.php");
-}
 session_set_cookie_params(null,'/','localhost',false,true);
 date_default_timezone_set('Europe/Istanbul');
 ob_start();

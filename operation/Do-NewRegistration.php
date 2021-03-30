@@ -2,12 +2,7 @@
 include "../db/Database.class.php";
 include "../function/Function.php";
 $db=new \vivense\db\Database();
-if (isset($_SESSION["LogedIn"])!=true)
-{
-go("../Login.php");
-}else {
-    go("../Home.php");
-}
+
 
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]) && isset($_POST["g-recaptcha-response"]) )
 {
