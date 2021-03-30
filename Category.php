@@ -29,22 +29,23 @@ $db=new \vivense\db\Database();
                 <div class="card-tools col-md-6">
                     <h6>
                       <?php
-                        if (isset($_GET["confirm"])==1 && isset($_GET["categoryId"])) {
-                            $getCategoryId=$_GET["categoryId"];
-                          ?>
-                            <div class="alert alert-success">
-                            <?php echo $getCategoryId." "."Numaralı Kategori Silindi";
-                            ?>
-                            </div>
-                      <?php }elseif (isset($_GET["confirm"])=="categoryedit0") { ?>
-                            <div class="alert alert-danger">
-                              Kategori Düzenlenemedi
-                            </div>
-                      <?php }elseif (isset($_GET["confirm"])=="categoryedit1") { ?>
-                            <div class="alert alert-success">
-                              Kategori Düzenlendi 
-                            </div>
-                      <?php } ?>
+                        if (@security($_GET["confirm"]=="okdelete")) { ?>
+                          <div class="alert alert-success">
+                            Kategori Silindi
+                          </div>
+                        <?php }elseif (@security($_GET["confirm"]=="nodelete")) { ?>
+                          <div class="alert alert-danger">
+                            Kategori Silinemedi
+                          </div>
+                        <?php }elseif (@security($_GET["confirm"]=="categoryeditno")) { ?>
+                          <div class="alert alert-danger">
+                            Kategori Düzenlenemedi
+                          </div>
+                        <?php }elseif (@security($_GET["confirm"]=="categoryeditok")) { ?>
+                          <div class="alert alert-success">
+                            Kategori Düzenlendi
+                          </div>
+                        <?php } ?>
                     </h6>
                 </div>
               </div>
@@ -79,7 +80,6 @@ $db=new \vivense\db\Database();
                   </tr>
                   </tbody>
                   <?php } ?>
-                  </form>
                   <tfoot>
                   <tr>
                   <th>Sıra</th>
@@ -105,7 +105,7 @@ $db=new \vivense\db\Database();
                          //   $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId   // WHERE category.CategoryId=?",array($number));
                          //                 foreach ($subCategory as $itemsSubCategory) {                   
                          // ?>
-                          <option value="<?php echo $itemsSubCategory->SubCategoryId;?>"><?php echo $itemsSubCategory->SubCategoryName; ?></option>
+                          <option value="<?php// echo $itemsSubCategory->SubCategoryId;?>"><?php// echo $itemsSubCategory->SubCategoryName; ?></option>
                           <?php // }  ?> 
                         </select>
                     </li>

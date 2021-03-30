@@ -20,19 +20,15 @@ include "SideBar.php";
     </div>
     <div class="col-md-6">
       <?php
-          if (@$_GET["confirm"]=="addcategory") { ?>
+          if (@security($_GET["confirm"])=="addcategory1") { ?>
               <div class="alert alert-success">
                 Yeni Kategori Eklendi
               </div>
-          <?php }elseif (@$_GET["confirm"]=="unaddcategory") { ?>
+          <?php }elseif (@security($_GET["confirm"])=="unaddcategory0") { ?>
             <div class="alert alert-success">
                 Yeni Kategori Eklenemedi Lütfen Tekrar Deneyiniz
             </div>
-         <?php }elseif (@$_GET["confirm"]=="errorcategory") { ?>
-            <div class="alert alert-danger">
-                Beklenmedik Bir Hata Oluştu
-            </div>
-        <?php } ?>
+         <?php } ?>
     </div>
    <section class="content">
       <div class="container-fluid">
@@ -45,21 +41,33 @@ include "SideBar.php";
                                 <div class="card-header">
                                 <h3 class="card-title">Yeni Kategori</h3>
                                 </div>
+                                <div class="card-body">
+
                                 <form action="operation/Operation.php" method="POST">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label >Kategori ID</label>
-                                            <input type="text" name="categoryuniqid" class="form-control"></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label >Kategori Name</label>
-                                            <input type="text" name="categoryname" class="form-control" ></input>
+                                    <div class="form-group">
+                                        <div class="col-md-3">
+                                            <label for="category_uniqid">Kategori ID</label>
                                         </div>
                                         <div class="col-md-12">
-                                        <button type="button" name="addcategory" class="btn btn-success" >Ekle</button>
+                                            <input type="text" class="form-control" name="category_uniqid">
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-3">
+                                            <label for="category_name">Kategori Adı</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control" name="category_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-success" name="addCategory">Kategori Ekle</button>
+                                    </div>
                                 </form>
+
+                                </div>
                             </div>
                         </div>
                         <?php

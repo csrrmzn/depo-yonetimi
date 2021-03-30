@@ -32,7 +32,7 @@ include "SideBar.php";
             </div>
             <?php
               if (isset($_GET["CategoryId"])) {
-                $categoryId=$_GET["CategoryId"];
+                $categoryId=security($_GET["CategoryId"]);
                 $categoryEdit=$db->getRows("SELECT * FROM category  WHERE CategoryId=?",array("$categoryId"));
                     foreach ($categoryEdit as $itemsValue) {
               }
@@ -49,7 +49,7 @@ include "SideBar.php";
                     <input type="text" value="<?php echo $itemsValue->CategoryName;?>" required="required" name="categoryName" class="form-control">
                 </div>
                 <div>
-                <a href="operation/Operation.php?CategoryId=<?php echo $itemsValue->CategoryId;?>">
+                <a href="CategoryEdit.php?CategoryId=<?php echo $itemsValue->CategoryId;?>">
                 <button type="submit" name="edit" class="btn btn-success float-right">Güncelle</button>
                 </a>
                 </div>
@@ -79,10 +79,10 @@ include "SideBar.php";
                                           ));
 
                       if ($editCategory==true) {
-                          go("Category.php?confirm=categoryedit1");
+                          go("Category.php?confirm=categoryeditok");
                       }
                   }else {
-                      go("Category.php?confirm=categoryedit0");
+                      go("Category.php?confirm=categoryeditno");
                   }
               }
             ?>

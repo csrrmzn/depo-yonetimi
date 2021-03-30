@@ -84,13 +84,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && iss
 }
 
 //Kategori Ekleme İşlemi
-if (isset($_POST["addcategory"]))
+if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addCategory"]))
 {
     
-    if (isset($_POST["categoryuniqid"]) && isset($_POST["categoryname"]))
+    if (isset($_POST["category_uniqid"]) && isset($_POST["category_name"]))
     {
-            $categoryUniqid=security($_POST["categoryuniqid"]);
-            $categoryName=security($_POST["categoryname"]);
+        
+            $categoryUniqid=$_POST["category_uniqid"];
+            $categoryName=$_POST["category_name"];
             $addCategory=$db->Insert("INSERT INTO category SET
                             CategoryUniqid=?,
                             CategoryName=?",array(
@@ -130,9 +131,9 @@ if (isset($_GET["CategoryId"]))
 
     $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
     if ($deleteCategory==true) {
-        go("../Category.php?confirm=1&categoryId=$categoryId");
+        go("../Category.php?confirm=okdelete");
     }else {
-        go("../Category.php?confirm=0&categoryId=$categoryId");
+        go("../Category.php?confirm=nodelete");
     }
 }
 
