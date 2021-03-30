@@ -1,2 +1,3 @@
 # Depo-Yonetimi
-Bootcamp Bitirme Projesi
+
+## Depo Yönetimi ile neler yapılabilir?
