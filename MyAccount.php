@@ -40,11 +40,6 @@ $db=new \vivense\db\Database();
               Lütfen Tüm Bilgilerinizi Eksiksiz Doldurunuz
             </div>
           <?php break;
-          case 'error': ?>
-            <div class="alert alert-danger">
-              Bilgileriniz Düzenlenemedi! Lütfen Tekrar Deneyiniz
-            </div>
-          <?php break;
         } ?>
       </h6>
     </div>
@@ -88,8 +83,8 @@ $db=new \vivense\db\Database();
                     <td><?=$items->UserEmail;?></td>
                     <td><?=$items->UserBirtday;?></td>
                     <td >
-                    <!--<a href="MyAccountEdit.php?UserId=<?=$items->UserId;?>"><button class="btn btn-primary" >Düzenle</button></a>-->
-                    <a href="operation/Operation.php?userId=<?=$items->UserId;?>" ><button class="btn btn-danger" name="deletemyaccount">Hesabımı Sil</button ></a>
+                    <a href="MyAccountEdit.php"><button class="btn btn-primary" >Düzenle</button></a>
+                    <a href="operation/EditMyAccount.php?UserId=<?php echo $items->UserId;?>" ><button class="btn btn-danger" name="deletemyaccount">Hesabımı Sil</button ></a>
                     </td>
                   </tr>
                   <?php } ?>

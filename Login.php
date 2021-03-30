@@ -56,7 +56,7 @@ include "function/Function.php";
       </div>
     <?php break;
     case 'updatepassword': ?>
-      <div class="alert alert-danger">
+      <div class="alert alert-success">
         Şifreniz Güncellendi Lütfen Giriş Yapınız
       </div>
     <?php break;
@@ -66,9 +66,12 @@ include "function/Function.php";
       </div>
     <?php break;
     case 'deletemyaccount': ?>
-      <div class="alert alert-danger">
-        Hesabınız Silindi<br>
-        Aramızdan Ayrıldığınız İçin Üzgünüz..
+      <div class="alert alert-success">
+        Yakıştımı Bu Sana<br>
+        Orkların Devrini Bitirdin
+      <!--Mizaj Amaçlı Eklemiştir -->
+      <div class="tenor-gif-embed" data-postid="19107837" data-share-method="host" data-width="100%" data-aspect-ratio="2.5670103092783507"></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      <!--Mizaj Amaçlı Eklemiştir -->
       </div>
     <?php break;
     case 'undeletemyaccount': ?>
@@ -77,8 +80,7 @@ include "function/Function.php";
         Giriş Ekranına Yönlendirildiniz
       </div>
     <?php break;
-    }
-?>
+    } ?>
 
   <div class="card card-outline card-primary">
     <div class="card-header text-center">

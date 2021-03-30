@@ -107,22 +107,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addCategory"]))
 }
 
 
-//Hesap Silme İşlemi
-if (isset($_POST["deletemyaccount"]))
-{
-    if (!empty($_GET["userId"])) {
 
-        $userıd=security($_GET["userId"]);
-        $deleteMyAccount=$db->Delete('DELETE FROM users WHERE
-                            UserId=?',
-                            array($userıd));
-        if ($deleteMyAccount==true) {
-            go("../Login.php?confirm=deletemyaccount");
-        }else {
-            go("../Login.php?confirm=undeletemyaccount");
-        }
-    }    
-}
 
 //Kategori Silme
 if (isset($_GET["CategoryId"]))
