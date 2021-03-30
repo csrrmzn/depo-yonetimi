@@ -3,6 +3,9 @@ session_set_cookie_params(null,'/','localhost',false,true);
 date_default_timezone_set('Europe/Istanbul');
 ob_start();
 session_start();
+$value1=basename($_SERVER["PHP_SELF"]);
+$value2=basename(__FILE__);
+accessBlock($value1,$value2,"../Home.php");
 
 function go($url,$time=0)
 {
