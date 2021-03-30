@@ -5,6 +5,12 @@ include "../function/Function.php";
 require_once('../vendor/php-excel-reader/excel_reader2.php');
 require_once('../vendor/SpreadsheetReader.php');
 $db=new \vivense\db\Database();
+if (isset($_SESSION["LogedIn"])!=true)
+{
+go("../Login.php");
+}else {
+    go("../Home.php");
+}
 
 //Toplu Ürün İndirme
 if (isset($_POST["export"]) && isset($_POST["category"]))
