@@ -97,14 +97,14 @@ include "SideBar.php";
                                         <?php
                                         $myQuery=$db->getRows("SELECT * FROM category");
                                         foreach ($myQuery as $items) {
-                                            $number=$items->CategoryId;
+                                            $number=$items->Category_Id;
                                             $recordsCategory=$db->getColumn("SELECT COUNT(CategoryName) FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE product.CategoryId=?",array($number));
                                         ?>
                                     <tbody>
                                     <tr>
-                                    <th><?php echo $items->CategoryId?></th>
-                                    <td><?php echo $items->CategoryUniqid?></td>
-                                    <td><?php echo $items->CategoryName;?></td>
+                                    <th><?php echo $items->Category_Id?></th>
+                                    <td><?php echo $items->Category_Uniqid?></td>
+                                    <td><?php echo $items->Category_Name;?></td>
                                     <!--<td>
                                         <form action="" method="POST">
                                             <select name="category" class="form-control">
@@ -112,7 +112,7 @@ include "SideBar.php";
                                                 $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId WHERE category.CategoryId=?",array($number));
                                                             foreach ($subCategory as $itemsSubCategory) {                   
                                             ?>
-                                            <option value="<?php echo $itemsSubCategory->SubCategoryId;?>"><?php echo $itemsSubCategory->SubCategoryName; ?></option>
+                                            <option value="<?php echo $itemsSubCategory->Sub_Category_Id;?>"><?php echo $itemsSubCategory->SubCategoryName; ?></option>
                                             <?php } ?> 
                                             </select>
                                         </form>

@@ -44,7 +44,7 @@ $db=new \vivense\db\Database();
                 </h6>
                 <div class="card-tools">
                   <div class="outer-container">
-                    <form action="operation/Export-ImportOperation.php" method="POST" name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+                    <form action="operation/Export-ImportOperation/Export-ImportOperation.php" method="POST" name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
                   <div>
                     <label>Excel Dosyasını Seç</label>
                     <input type="file" name="file" id="file" accept=".xls,.xlsx">
@@ -88,12 +88,12 @@ $db=new \vivense\db\Database();
                   ?>
                   <tbody>
                   <tr>
-                    <td><?=$items->ProductUniqid;?></td>
-                    <td><?=$items->ProductName;?></td>
-                    <td><?=$items->ProductPurchasePrice;?></td>
-                    <td><?=$items->ProductSellPrice;?></td>
-                    <td><?=$items->ProductContent;?></td>
-                    <td><?=$items->CategoryName;?></td>
+                    <td><?=$items->Product_Uniqid;?></td>
+                    <td><?=$items->Product_Name;?></td>
+                    <td><?=$items->Product_PurchasePrice;?></td>
+                    <td><?=$items->Product_SellPrice;?></td>
+                    <td><?=$items->Product_Content;?></td>
+                    <td><?=$items->Category_Name;?></td>
                   </tr>
                   </tbody>
                   <?php } ?>

@@ -89,7 +89,7 @@ include "function/Function.php";
     <div class="card-body">
       <p class="login-box-msg">Lütfen Giriş Yapınız</p>
 
-      <form method="post" action="operation/Do-Login.php" >
+      <form method="post" action="operation/LoginOperation/Do-Login.php" >
         <div class="input-group mb-3">
           <input type="text" name="username" placeholder="Adınız" class="form-control">
           <div class="input-group-append">

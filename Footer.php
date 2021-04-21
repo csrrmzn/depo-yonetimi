@@ -83,6 +83,5 @@ $('#cmd').click(function () {
        });
 });
 </script>
-
 </body>
 </html>

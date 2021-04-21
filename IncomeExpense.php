@@ -33,7 +33,7 @@ $db=new \vivense\db\Database();
                                             $myQuery0=$db->getRows("SELECT * FROM category ");
                                                 foreach ($myQuery0 as $items0) {                   
                                         ?>
-                                        <option value="<?php echo $items0->CategoryId; $ıd=$items0->CategoryId;?>"><?php echo $items0->CategoryName; ?></option>
+                                        <option value="<?php echo $items0->Category_Id; $ıd=$items0->Category_Id;?>"><?php echo $items0->Category_Name; ?></option>
                                         
                                         <?php } ?>
                                         
@@ -45,7 +45,7 @@ $db=new \vivense\db\Database();
                                         </form>
                                     </li>
                                 <li>
-                                <form method="POST" action="Export.php">
+                                <form method="POST" action="Download.php">
                                     <div class="card-tools">
                                         <a href="Export.php">
                                         <button class="btn btn-success" name="export">Excel İndir</button>
@@ -80,12 +80,12 @@ $db=new \vivense\db\Database();
                                 ?>                
                             <tbody>
                             <tr>
-                                <td><?php echo $items->ProductUniqid;?></td>
-                                <td><?php echo $items->ProductName;?></td>
-                                <td><?php echo $items->ProductPurchasePrice;?></td>
-                                <td><?php echo $items->ProductSellPrice;?></td>
+                                <td><?php echo $items->Product_Uniqid;?></td>
+                                <td><?php echo $items->Product_Name;?></td>
+                                <td><?php echo $items->Product_PurchasePrice;?></td>
+                                <td><?php echo $items->Product_SellPrice;?></td>
                                 <td style="width: 12%;">
-                                <a href="operation/Operation.php?ProductId=<?php echo $items->ProductId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                                <a href="operation/Operation.php?ProductId=<?php echo $items->Product_Id;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                                 </td>
                             </tr>
                             </tbody>

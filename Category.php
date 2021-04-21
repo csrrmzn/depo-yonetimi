@@ -69,13 +69,13 @@ $db=new \vivense\db\Database();
                     ?>
                   <tbody>
                   <tr>
-                  <th><?php echo $items->CategoryId;?></th>
-                  <td><?php echo $items->CategoryUniqid;?></td>
-                  <td><?php echo $items->CategoryName;?></td>
+                  <th><?php echo $items->Category_Id;?></th>
+                  <td><?php echo $items->Category_Uniqid;?></td>
+                  <td><?php echo $items->Category_Name;?></td>
                   <td><?php echo $recordsCategory;?></td>
                   <td align="middle" >
-                  <a href="CategoryEdit.php?CategoryId=<?php echo $items->CategoryId;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
-                  <a href="operation/Operation.php?CategoryId=<?php echo $items->CategoryId;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
+                  <a href="CategoryEdit.php?CategoryId=<?php echo $items->Category_Id;?>"><button class="btn btn-primary btn-sm">Düzenle</button></a>
+                  <a href="operation/Operation.php?CategoryId=<?php echo $items->Category_Id;?>"><button class="btn btn-danger btn-sm">Sil</button></a>
                   </td>
                   </tr>
                   </tbody>
@@ -97,20 +97,5 @@ $db=new \vivense\db\Database();
       </div>
     </section>
 </div>
-
-                 <!-- <td>
-                    <form action="operation/Operation.php" method="POST">
-                        <select name="category" class="form-control">
-                         // <?php 
-                         //   $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId   // WHERE category.CategoryId=?",array($number));
-                         //                 foreach ($subCategory as $itemsSubCategory) {                   
-                         // ?>
-                          <option value="<?php// echo $itemsSubCategory->SubCategoryId;?>"><?php// echo $itemsSubCategory->SubCategoryName; ?></option>
-                          <?php // }  ?> 
-                        </select>
-                    </li>
-                    
-                  </td> -->
-
 <?php
 include "Footer.php";

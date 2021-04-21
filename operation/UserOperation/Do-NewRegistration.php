@@ -1,6 +1,6 @@
 <?php
-include "../db/Database.class.php";
-include "../function/Function.php";
+include "../../db/Database.class.php";
+include "../../function/Function.php";
 $db=new \vivense\db\Database();
 
 
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]) && is
 
                 {
                 
-                    go("../NewRegistration.php?confirm=empty");
+                    go("../../NewRegistration.php?confirm=empty");
             
                 }else {
             
@@ -69,25 +69,25 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]) && is
         
             }else {
                
-                go("../NewRegistration.php?confirm=reloaded");
+                go("../../NewRegistration.php?confirm=reloaded");
             }
 
             if ($addUser==true) {
                    
-                        go("../Login.php?confirm=okey");
+                        go("../../Login.php?confirm=okey");
                     }else {
                    
-                        go("../NewRegistration.php?confirm=no");
+                        go("../../NewRegistration.php?confirm=no");
                     }
 
 
             /*go("../NewRegistration.php?confirm=securityerror2");*/
 
 		} else {
-            go("../NewRegistration.php?confirm=securityerror");
+            go("../../NewRegistration.php?confirm=securityerror");
             
 		}
 }else { 
    
-    go("../NewRegistration.php?confirm=ımposiblentry");
+    go("../../NewRegistration.php?confirm=ımposiblentry");
 }

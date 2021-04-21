@@ -72,7 +72,7 @@ include "SideBar.php";
                             $category=$db->getRows("SELECT * FROM category");
                             foreach ($category as $categorySelect) {                   
                         ?>
-                          <option value="<?=$categorySelect->CategoryId;?>"><?=$categorySelect->CategoryName;?></option>  
+                          <option value="<?=$categorySelect->Category_Id;?>"><?=$categorySelect->Category_Name;?></option>  
                         <?php } ?>
                     </select>
                 </div>
@@ -106,10 +106,10 @@ include "SideBar.php";
                   ?>
                   <tbody>
                     <tr>
-                      <td><?=$items->ProductUniqid;?></td>
-                      <td><?=$items->ProductName;?></td>
-                      <td><?=$items->ProductContent;?></td>
-                      <td><?=$items->CategoryName;?></td>
+                      <td><?=$items->Product_Uniqid;?></td>
+                      <td><?=$items->Product_Name;?></td>
+                      <td><?=$items->Product_Content;?></td>
+                      <td><?=$items->Category_Name;?></td>
                     </tr>
                   </tbody>
                   <?php } ?>

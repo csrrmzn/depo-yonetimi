@@ -42,14 +42,14 @@ include "SideBar.php";
                 <div class="card-body">
                 <div class="form-group">
                     <label for="categoryUniqid">Kategori ID</label>
-                    <input type="text" value="<?php echo $itemsValue->CategoryUniqid;?>" required="required" name="categoryUniqid" class="form-control">
+                    <input type="text" value="<?php echo $itemsValue->Category_Uniqid;?>" required="required" name="categoryUniqid" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="categoryName">Kategori Adı</label>
-                    <input type="text" value="<?php echo $itemsValue->CategoryName;?>" required="required" name="categoryName" class="form-control">
+                    <input type="text" value="<?php echo $itemsValue->Category_Name;?>" required="required" name="categoryName" class="form-control">
                 </div>
                 <div>
-                <a href="CategoryEdit.php?CategoryId=<?php echo $itemsValue->CategoryId;?>">
+                <a href="CategoryEdit.php?CategoryId=<?php echo $itemsValue->Category_Id;?>">
                 <button type="submit" name="edit" class="btn btn-success float-right">Güncelle</button>
                 </a>
                 </div>

@@ -96,6 +96,70 @@ $db=new \vivense\db\Database();
               <?php } ?>
             </div>
           </div>
+              <?php
+                if (isset($_GET) && isset($_GET["see"])=="success")
+                { ?>
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Yeni Not Ekle</h3>
+                  </div>
+                  <form method="POST" action="operation/Operation.php">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label>Konu</label>
+                        <input type="text" class="form-control" placeholder="Not Konu">
+                      </div>
+                      <div class="form-group">
+                        <label>Açıklama</label>
+                        <input type="text" class="form-control" placeholder="Not Açıklama">
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-success">Ekle</button>
+                    </div>
+                  </form>
+                </div>
+              <?php } ?>
+          <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Notlar</h3>
+
+                <div class="card-tools">
+                  <a href="Home.php?see=success"><button class="btn btn-success">Yeni Not Ekle</button></a>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Kullanıcı</th>
+                      <th>Tarih</th>
+                      <th>Başlık</th>
+                      <th>Açıklama</th>
+                      <th>Notu Sil</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><i class="fas fa-check-circle"></i></td>
+                      <td>John Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-success">Approved</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td><a href="operation/Operation.php"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
       </div>
     </section>
   </div>

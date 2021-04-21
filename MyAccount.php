@@ -58,7 +58,7 @@ $db=new \vivense\db\Database();
                     $username=$_SESSION["username"];
                   $myQuery=$db->getRows("SELECT * FROM users WHERE UserName=?",array($username));
                               foreach ($myQuery as $items) {
-                                $pass=$items->UserPassword;
+                                $pass=$items->User_Password;
                                 $decodepass=base64_decode($pass);
                   ?>
                   <tr>
@@ -75,16 +75,16 @@ $db=new \vivense\db\Database();
                   </thead>
                   <tbody>
                   <tr>
-                    <td><?=$items->UserName;?></td>
-                    <td><?=$items->UserLastname;?></td>
+                    <td><?=$items->User_Name;?></td>
+                    <td><?=$items->User_Lastname;?></td>
                     <td><?=$decodepass;?></td>
-                    <td><?=$items->UserSecretCode;?></td>
-                    <td><?=$items->UserPhone?></td>
-                    <td><?=$items->UserEmail;?></td>
-                    <td><?=$items->UserBirtday;?></td>
+                    <td><?=$items->User_SecretCode;?></td>
+                    <td><?=$items->User_Phone?></td>
+                    <td><?=$items->User_Email;?></td>
+                    <td><?=$items->User_Birtday;?></td>
                     <td >
                     <a href="MyAccountEdit.php"><button class="btn btn-primary" >Düzenle</button></a>
-                    <a href="operation/EditMyAccount.php?UserId=<?php echo $items->UserId;?>" ><button class="btn btn-danger" name="deletemyaccount">Hesabımı Sil</button ></a>
+                    <a href="operation/UserOperation/EditMyAccount.php?UserId=<?php echo $items->User_Id;?>" ><button class="btn btn-danger" name="deletemyaccount">Hesabımı Sil</button ></a>
                     </td>
                   </tr>
                   <?php } ?>

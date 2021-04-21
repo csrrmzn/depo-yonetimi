@@ -51,7 +51,7 @@ $db=new \vivense\db\Database();
                             $myQuery0=$db->getRows("SELECT * FROM category ");
                                           foreach ($myQuery0 as $items0) {                   
                           ?>
-                          <option value="<?=$items0->CategoryId;?>"><?=$items0->CategoryName; ?></option>
+                          <option value="<?=$items0->Category_Id;?>"><?=$items0->Category_Name; ?></option>
                           <?php } ?> 
                         </select>
                     </li>
@@ -90,15 +90,15 @@ $db=new \vivense\db\Database();
                                     foreach($myQuery as $items) { ?>
                   <tbody>
                   <tr>
-                    <td><?=$items->ProductUniqid;?></td>
-                    <td><?=$items->ProductName;?></td>
-                    <td><?=$items->ProductPurchasePrice;?></td>
-                    <td><?=$items->ProductSellPrice;?></td>
-                    <td><?=$items->ProductContent;?></td>
-                    <td><?=$items->CategoryName;?></td>
+                    <td><?=$items->Product_Uniqid;?></td>
+                    <td><?=$items->Product_Name;?></td>
+                    <td><?=$items->Product_PurchasePrice;?></td>
+                    <td><?=$items->Product_SellPrice;?></td>
+                    <td><?=$items->Product_Content;?></td>
+                    <td><?=$items->Category_Name;?></td>
                     <td style="width: 12%;">
-                    <a href="ProductEdit.php?ProductId=<?php echo $items->ProductId;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
-                    <a href="operation/Operation.php?Product=1&ProductId=<?php echo $items->ProductId;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
+                    <a href="ProductEdit.php?ProductId=<?php echo $items->Product_Id;?>"><button type="submit" class="btn btn-primary btn-sm">Düzenle</button></a>
+                    <a href="operation/Operation.php?Product=1&ProductId=<?php echo $items->Product_Id;?>"><button type="submit" class="btn btn-danger btn-sm">Sil</button></a>
                     </td>
                   </tr>
                   </tbody>

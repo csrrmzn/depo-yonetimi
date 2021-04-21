@@ -42,23 +42,23 @@ include "SideBar.php";
                 <div class="card-body">
                 <div class="form-group">
                     <label for="productUniqid">Ürün ID</label>
-                    <input type="text" value="<?=$itemsValue->ProductUniqid;?>" required="required" name="productUniqid" class="form-control">
+                    <input type="text" value="<?=$itemsValue->Product_Uniqid;?>" required="required" name="productUniqid" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="ProductName">Ürün Adı</label>
-                    <input type="text" value="<?=$itemsValue->ProductName;?>" required="required" name="productName" class="form-control">
+                    <input type="text" value="<?=$itemsValue->Product_Name;?>" required="required" name="productName" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="productPurchasePrice">Alış fiyatı</label>
-                    <input type="text" value="<?=$itemsValue->ProductPurchasePrice;?>" name="productPurchasePrice" class="form-control">
+                    <input type="text" value="<?=$itemsValue->Product_PurchasePrice;?>" name="productPurchasePrice" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="productSellPrice">Satış Fiyatı(min)</label>
-                    <input type="text" value="<?=$itemsValue->ProductSellPrice;?>" name="productSellPrice" class="form-control">
+                    <input type="text" value="<?=$itemsValue->Product_SellPrice;?>" name="productSellPrice" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="productContent">Ürün Açıklama</label>
-                    <textarea name="productContent" value="<?=$itemsValue->ProductContent;?>" class="form-control" rows="4"></textarea>
+                    <textarea name="productContent" value="<?=$itemsValue->Product_Content;?>" class="form-control" rows="4"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="categoryId">Kategori</label>
@@ -67,7 +67,7 @@ include "SideBar.php";
                             $category=$db->getRows("SELECT * FROM category");
                             foreach ($category as $categorySelect) {                   
                         ?>
-                            <option value="<?=$categorySelect->CategoryId;?>" selected="<?=$itemsValue->CategoryId;?>"><?=$categorySelect->CategoryName;?></option>  
+                            <option value="<?=$categorySelect->Category_Id;?>" selected="<?=$itemsValue->Category_Id;?>"><?=$categorySelect->Category_Name;?></option>  
                         <?php } ?>
                     </select>
                 </div>

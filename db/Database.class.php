@@ -40,8 +40,10 @@ class Database
     private function myQuery($query,$params)
     {
         if (is_null($params)) {
+
                 $this->stmt=$this->db->query($query);
             }else {
+                
                 $this->stmt=$this->db->prepare($query);
                 $this->stmt->execute($params);
             }

@@ -29,7 +29,7 @@ $db=new \vivense\db\Database();
                             $myQuery0=$db->getRows("SELECT * FROM category ");
                                           foreach ($myQuery0 as $items0) {                   
                         ?>
-                          <option value="<?php echo $items0->CategoryId;?>"><?php echo $items0->CategoryName; ?></option>
+                          <option value="<?php echo $items0->Category_Id;?>"><?php echo $items0->Category_Name; ?></option>
                         <?php } ?> 
                     </select>
             </li>
@@ -62,13 +62,13 @@ $db=new \vivense\db\Database();
                     </h6>
                   </li>
                     <li class="nav-item">
-                      <form action="operation/Export-ImportOperation.php" method="POST">
+                      <form action="operation/Export-ImportOperation/Export-ImportOperation.php" method="POST">
                         <select name="category" class="form-control">
                           <?php
                             $myQuery0=$db->getRows("SELECT * FROM category ");
                                           foreach ($myQuery0 as $items0) {                   
                           ?>
-                          <option value="<?php echo $items0->CategoryId;?>"><?php echo $items0->CategoryName; ?></option>
+                          <option value="<?php echo $items0->Category_Id;?>"><?php echo $items0->Category_Name; ?></option>
                           <?php } ?> 
                         </select>
                     </li>
@@ -107,12 +107,12 @@ $db=new \vivense\db\Database();
                   ?>
                   <tbody>
                   <tr>
-                    <td><?php echo $items->ProductUniqid;?></td>
-                    <td><?php echo $items->ProductName;?></td>
-                    <td><?php echo $items->ProductPurchasePrice;?></td>
-                    <td><?php echo $items->ProductSellPrice;?></td>
-                    <td><?php echo $items->ProductContent;?></td>
-                    <td><?php echo $items->CategoryName;?></td>
+                    <td><?php echo $items->Product_Uniqid;?></td>
+                    <td><?php echo $items->Product_Name;?></td>
+                    <td><?php echo $items->Product_PurchasePrice;?></td>
+                    <td><?php echo $items->Product_SellPrice;?></td>
+                    <td><?php echo $items->Product_Content;?></td>
+                    <td><?php echo $items->Category_Name;?></td>
                   </tr>
                   </tbody>
                   <?php } ?>

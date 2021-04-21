@@ -1,9 +1,9 @@
 <?php
-include "../db/Database.class.php";
-include "../Classes/PHPExcel.php";
-include "../function/Function.php";
-require_once('../vendor/php-excel-reader/excel_reader2.php');
-require_once('../vendor/SpreadsheetReader.php');
+include "../../db/Database.class.php";
+include "../../Classes/PHPExcel.php";
+include "../../function/Function.php";
+require_once('../../vendor/php-excel-reader/excel_reader2.php');
+require_once('../../vendor/SpreadsheetReader.php');
 $db=new \vivense\db\Database();
 
 
@@ -66,9 +66,9 @@ if (isset($_POST["export"]) && isset($_POST["category"]))
         $name=uniqid(true);
         exportExcel("Ürünler".$name,$columns,$data,$replaceDotCol);
     if ($myQuery>0) {
-        go("../Export.php?confirm=successful",1);
+        go("../../Export.php?confirm=successful",1);
     }else {
-        go("../Export.php?confirm=unsuccessful",1);
+        go("../../Export.php?confirm=unsuccessful",1);
     }
     
     
@@ -83,7 +83,7 @@ if (isset($_POST["import"]))
 
     if(in_array($_FILES["file"]["type"],$allowedFileType)){
 
-        $targetPath = '../uploads/'.$_FILES['file']['name'];
+        $targetPath = '../../uploads/'.$_FILES['file']['name'];
         move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
 
         $Reader = new SpreadsheetReader($targetPath);
@@ -159,9 +159,9 @@ if (isset($_POST["import"]))
                     ));
 
                     if ($query==true) {
-                        go("../Upload.php?confirm=successful");
+                        go("../../Upload.php?confirm=successful");
                     } else {
-                        go("../Upload.php?confirm=unsuccessful");
+                        go("../../Upload.php?confirm=unsuccessful");
                     }
 
                 }
@@ -171,7 +171,7 @@ if (isset($_POST["import"]))
     }
     else
     { 
-        go("../Upload.php?confirm=error");
+        go("../../Upload.php?confirm=error");
     }
 }
 

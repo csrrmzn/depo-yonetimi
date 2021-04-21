@@ -58,7 +58,7 @@ include "function/Function.php";
     </div>
     <div class="card-body">
       <p class="login-box-msg"></p>
-      <form method="post" action="operation/Do-NewRegistration.php">
+      <form method="post" action="operation/UserOperation/Do-NewRegistration.php">
         <div class="input-group mb-3">
           <input type="text" name="name" placeholder="Adınız" class="form-control">
           <div class="input-group-append">
