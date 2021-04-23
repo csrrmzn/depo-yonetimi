@@ -3,48 +3,6 @@ include "../db/Database.class.php";
 include "../function/Function.php";
 $db=new \vivense\db\Database();
 
-
-/* 
-//Yeni Kayıt İşlemi
-if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]))
-{
-    if (isset($_POST["name"]) && isset($_POST["lastname"]) && isset($_POST["password"]) && isset($_POST["passwordclone"]) && isset($_POST["email"]) && isset($_POST["birtday"]))
-    {
-
-        if (empty($_POST["name"]) || empty($_POST["lastname"]) || empty($_POST["password"]) || empty($_POST["passwordclone"]) || empty($_POST["email"])
-        || empty($_POST["birtday"]) ) {
-            go("NewRegistration.php?confirm=empty");
-        }else {
-            
-            $username=security($_POST["name"]);
-            $lastname=security($_POST["lastname"]);
-            $password=security($_POST["password"]);
-            $email=security($_POST["email"]);
-            $birtday=security($_POST["birtday"]);
-
-        $addUser=$db->Insert('INSERT INTO users SET
-                            UserName=?,
-                            UserLastname=?,
-                            UserPassword=?,
-                            UserEmail=?,
-                            UserBirtday=?',
-                            array($username,$lastname,$password,$email,$birtday));
-        if ($addUser==true) {
-            go("Login.php?confirm=okey");
-        }else {
-            go("NewRegistration.php?confirm=no");
-        }
-    }
-        
-    }else {
-        go("NewRegistration.php?confirm=reloaded");
-    }
-
-}else {
-    go("NewRegistration.php?confirm=error");
-}
-*/
-
 //Şifre Oluşturma İşlemi
 if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && isset($_POST["newpasswordclone"]) && $_POST["newpassword"]==$_POST["newpasswordclone"])
 {
@@ -55,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && iss
         $password=security($_POST["newpassword"]);
         $passwordClone=security($_POST["newpasswordclone"]);
 
-        $myQuery=$db->getColumn("SELECT UserSecretCode FROM users WHERE UserName=?",array($username));
+        $myQuery=$db->getColumn("SELECT User_SecretCode FROM users WHERE User_Name=?",array($username));
         $databaseSecretCode=$myQuery;
 
          if ($secretcode==$databaseSecretCode)
@@ -63,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnewpassword"]) && iss
             $secretPass=md5(md5(sha1(sha1($password))));
 
             $addNewPassword=$db->Update('UPDATE users SET
-                                    UserPassword=? WHERE UserName=?',
+                                    User_Password=? WHERE User_Name=?',
                                     array($password,$username));
                 if ($addNewPassword==true) {
                     go("../Login.php?confirm=updatepassword");
@@ -87,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addCategory"]))
             $categoryUniqid=security($_POST["category_uniqid"]);
             $categoryName=security($_POST["category_name"]);
             $addCategory=$db->Insert("INSERT INTO category SET
-                            CategoryUniqid=?,
-                            CategoryName=?",array(
+                            Category_Uniqid=?,
+                            Category_Name=?",array(
                             $categoryUniqid,
                             $categoryName));
                             
@@ -100,15 +58,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addCategory"]))
     }
 }
 
-
-
-
 //Kategori Silme
 if (isset($_GET["CategoryId"]))
 {
     $categoryId=security($_GET["CategoryId"]);
 
-    $deleteCategory=$db->Delete("DELETE FROM category WHERE CategoryId=?",array($categoryId));
+    $deleteCategory=$db->Delete("DELETE FROM category WHERE Category_Id=?",array($categoryId));
     if ($deleteCategory==true) {
         go("../Category.php?confirm=okdelete");
     }else {
@@ -121,15 +76,13 @@ if (isset($_GET["ProductId"]))
 {
     $productId=security($_GET["ProductId"]);
 
-    $deleteProduct=$db->Delete("DELETE FROM product WHERE ProductId=?",array($productId));
+    $deleteProduct=$db->Delete("DELETE FROM product WHERE Product_Id=?",array($productId));
     if ($deleteProduct==true) {
         go("../Product.php?confirm=1&productId=$productId");
     }else {
         go("../Product.php?confirm=0&productId=$productId");
     }
 }
-
-
 
 //Ürün Ekleme İşlemi
 if (isset($_POST["addproduct"]))
@@ -142,12 +95,12 @@ if (isset($_POST["addproduct"]))
      $categoryId=security($_POST["categoryId"]);
 
      $addProduct=$db->Insert("INSERT INTO product SET
-                     ProductUniqid=?,
-                     ProductName=?,
-                     ProductPurchasePrice=?,
-                     ProductSellPrice=?,
-                     ProductContent=?,
-                     CategoryId=?",array(
+                     Product_Uniqid=?,
+                     Product_Name=?,
+                     Product_PurchasePrice=?,
+                     Product_SellPrice=?,
+                     Product_Content=?,
+                     Category_Id=?",array(
                      $productUniqid,
                      $productName,
                      $productPurchasePrice,
@@ -156,8 +109,47 @@ if (isset($_POST["addproduct"]))
                      $categoryId));
 
      if ($addProduct==true) {
-         go("../ProductAdd.php?Confirm=addproduct1");
+         go("../ProductAdd.php?confirm=addproduct1");
      }elseif ($addProduct==false ) {
-         go("../ProductAdd.php?Confirm=unaddproduct0");
+         go("../ProductAdd.php?confirm=unaddproduct0");
      }
+}
+
+//Not Ekleme İşlemi
+if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["addnote"]) && isset($_POST["notesubject"]) && isset($_POST["notedescription"]))
+{
+    $username=$_SESSION["username"];
+    $userId=$db->getColumn("SELECT User_Id FROM users WHERE User_Name=?",array($username));
+
+    $noteSubject=security($_POST["notesubject"]);
+    $noteDescription=security($_POST["notedescription"]);
+    
+    $addNote=$db->Insert("INSERT INTO notes SET
+                        Note_Subject=?,
+                        Note_Description=?,
+                        User_Id=?",array(
+                        $noteSubject,
+                        $noteDescription,
+                        $userId));
+    
+    if ($addNote==true)
+    {
+        go("../Home.php?confirm=addnote");
+    }else {
+        go("../Home.php?confirm=notaddnote");
+    }
+}
+
+//Not Silme İşlemi
+if (isset($_GET["noteıd"]))
+{
+    $noteUniqid=security($_GET["noteıd"]);
+    $deleteNote=$db->Delete("DELETE FROM notes WHERE Note_Uniqid=?",array($noteUniqid));
+
+    if ($deleteNote==true)
+    {
+        go("../Home.php?confirm=deletenote");
+    }else {
+        go("../Home.php?confirm=notdeletenote");
+    }
 }

@@ -36,7 +36,7 @@ $db=new \vivense\db\Database();
               <div class="card-body">
                   <?php
                     $username=$_SESSION["username"];
-                  $myQuery=$db->getRows("SELECT * FROM users WHERE UserName=?",array($username));
+                  $myQuery=$db->getRows("SELECT * FROM users WHERE User_Name=?",array($username));
                               foreach ($myQuery as $items) {
                                 $pass=$items->User_Password;
                                 $decodepass=base64_decode($pass);

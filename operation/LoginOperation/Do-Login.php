@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login"]) && isset($_POST
             $username=security($_POST["username"]);
             $password=security($_POST["pass"]);
             
-                $myQuery=$db->getRow("SELECT UserName,UserPassword FROM users WHERE UserName=?",array($username));
-                    @$databaseUser=$myQuery->UserName;
-                    @$databasePass=$myQuery->UserPassword;
+                $myQuery=$db->getRow("SELECT User_Name,User_Password FROM users WHERE User_Name=?",array($username));
+                    @$databaseUser=$myQuery->User_Name;
+                    @$databasePass=$myQuery->User_Password;
 
 
                 if (empty($username) && empty($password)) {

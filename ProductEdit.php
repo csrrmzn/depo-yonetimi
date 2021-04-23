@@ -34,7 +34,7 @@ include "SideBar.php";
             </div>
             <?php
                 $productId=$_GET["ProductId"];
-                $productEditSelect=$db->getRows("SELECT * FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE ProductId=?",array("$productId"));
+                $productEditSelect=$db->getRows("SELECT * FROM product INNER JOIN category ON product.Category_Id=category.Category_Id WHERE Product_Id=?",array("$productId"));
                     foreach ($productEditSelect as $itemsValue) {
                     
             ?>
@@ -89,12 +89,12 @@ include "SideBar.php";
                     $categoryId=strip_tags($_POST["categoryId"]);
 
                     $editProduct=$db->Update("UPDATE product SET
-                                        ProductUniqid=?,
-                                        ProductName=?,
-                                        ProductPurchasePrice=?,
-                                        ProductSellPrice=?,
-                                        ProductContent=?,
-                                        CategoryId=? WHERE ProductId=?",array(
+                                        Product_Uniqid=?,
+                                        Product_Name=?,
+                                        Product_PurchasePrice=?,
+                                        Product_SellPrice=?,
+                                        Product_Content=?,
+                                        Category_Id=? WHERE Product_Id=?",array(
                                         $productUniqid,
                                         $productName,
                                         $productPurchasePrice,

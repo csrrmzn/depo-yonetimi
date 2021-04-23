@@ -21,11 +21,11 @@ include "SideBar.php";
     </section>
     <div class="col-md-6">
       <?php
-          if (isset($_GET["Confirm"]) && $_GET["Confirm"]=="addproduct1") { ?>
+          if (isset($_GET["confirm"]) && $_GET["Confirm"]=="addproduct1") { ?>
               <div class="alert alert-success">
                 Yeni Ürün Eklendi
               </div>
-          <?php }elseif (isset($_GET["Confirm"]) && $_GET["Confirm"]=="unaddproduct0") { ?>
+          <?php }elseif (isset($_GET["confirm"]) && $_GET["Confirm"]=="unaddproduct0") { ?>
             <div class="alert alert-danger">
                 Yeni Ürün Eklenemedi Lütfen Tekrar Deneyiniz
             </div>
@@ -100,7 +100,7 @@ include "SideBar.php";
                     </tr>
                   </thead>
                   <?php
-                    $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON product.CategoryId=category.CategoryId ORDER BY ProductName ASC LIMIT 10");
+                    $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON product.Category_Id=category.Category_Id ORDER BY Product_Name ASC LIMIT 10");
                                 foreach ($myQuery as $items) {
                                     
                   ?>

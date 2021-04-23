@@ -75,7 +75,7 @@ $db=new \vivense\db\Database();
                                     }else {
                                             $categoryId=$_POST["category"];
                                     }
-                                        $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE product.CategoryId=?",array($categoryId));
+                                        $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON product.Category_Id=category.Category_Id WHERE product.Category_Id=?",array($categoryId));
                                             foreach ($myQuery as $items) {     
                                 ?>                
                             <tbody>

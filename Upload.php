@@ -82,7 +82,7 @@ $db=new \vivense\db\Database();
                   </thead>
                   <?php
                       $myQuery=$db->getRows("SELECT * FROM product INNER JOIN category ON
-                                    product.CategoryId=category.CategoryId LIMIT 10");
+                                    product.Category_Id=category.Category_Id LIMIT 10");
                                     
                                     foreach ($myQuery as $items) {     
                   ?>

@@ -49,13 +49,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["newregistration"]) && is
 
                 $password=base64_encode($password);
                 $addUser=$db->Insert('INSERT INTO users SET
-                            UserName=?,
-                            UserLastname=?,
-                            UserPassword=?,
-                            UserSecretCode=?,
-                            UserPhone=?,
-                            UserEmail=?,
-                            UserBirtday=?',
+                            User_Name=?,
+                            User_Lastname=?,
+                            User_Password=?,
+                            User_SecretCode=?,
+                            User_Phone=?,
+                            User_Email=?,
+                            User_Birtday=?',
                             array(
                             $username,
                             $lastname,

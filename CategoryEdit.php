@@ -33,7 +33,7 @@ include "SideBar.php";
             <?php
               if (isset($_GET["CategoryId"])) {
                 $categoryId=security($_GET["CategoryId"]);
-                $categoryEdit=$db->getRows("SELECT * FROM category  WHERE CategoryId=?",array("$categoryId"));
+                $categoryEdit=$db->getRows("SELECT * FROM category  WHERE Category_Id=?",array("$categoryId"));
                     foreach ($categoryEdit as $itemsValue) {
               }
                     

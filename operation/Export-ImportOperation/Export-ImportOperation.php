@@ -13,8 +13,8 @@ if (isset($_POST["export"]) && isset($_POST["category"]))
 
     $categoryId=security($_POST["category"]);
     $myQuery=$db->getRows("SELECT * From product INNER JOIN category ON
-                                    product.CategoryId=category.CategoryId WHERE
-                                    product.CategoryId=?",array($categoryId));
+                                    product.Category_Id=category.Category_Id WHERE
+                                    product.Category_Id=?",array($categoryId));
 
     
 
@@ -29,25 +29,25 @@ if (isset($_POST["export"]) && isset($_POST["category"]))
         */
         $replaceDotCol=array(); 
         foreach ($myQuery as $items) {
-            $productUniqid=$items->ProductUniqid;
-            $productName=$items->ProductName;
-            $productPurchase=$items->ProductPurchasePrice;
-            $productSell=$items->ProductSellPrice;
-            $productContent=$items->ProductContent;
-            $categoryName=$items->CategoryName;
-            $subCategoryId=$items->SubCategoryId;
+            $productUniqid=$items->Product_Uniqid;
+            $productName=$items->Product_Name;
+            $productPurchase=$items->Product_PurchasePrice;
+            $productSell=$items->Product_SellPrice;
+            $productContent=$items->Product_Content;
+            $categoryName=$items->Category_Name;
+            $subCategoryId=$items->Sub_Category_Id;
             
 
         /* Sütun Başlıkları */
         $columns=
         [
-            "ProductUniqid",
-            "ProductName",
-            "ProductPurchasePrice",
-            "ProductSellPrice",
-            "ProductContent",
-            "CategoryId",
-            "SubCategoryId"
+            "Product_Uniqid",
+            "Product_Name",
+            "Product_PurchasePrice",
+            "Product_SellPrice",
+            "Product_Content",
+            "Category_Id",
+            "Sub_Category_Id"
         ];
         
         
@@ -142,13 +142,13 @@ if (isset($_POST["import"]))
 
                 if (!empty($productUniqid) || !empty($productName) || !empty($productPurchasePrice) || !empty($productSellPrice) || !empty($productContent) || !empty($categoryId) || !empty($subCategoryId) ) {
                     $query=$db->Insert("INSERT INTO product SET
-                                        ProductUniqid=?,
-                                        ProductName=?,
-                                        ProductPurchasePrice=?,
-                                        productSellPrice=?,
-                                        ProductContent=?,
-                                        CategoryId=?,
-                                        SubCategoryId=?",array(
+                                        Product_Uniqid=?,
+                                        Product_Name=?,
+                                        Product_PurchasePrice=?,
+                                        product_SellPrice=?,
+                                        Product_Content=?,
+                                        Category_Id=?,
+                                        Sub_Category_Id=?",array(
                                         $productUniqid,
                                         $productName,
                                         $productPurchasePrice,

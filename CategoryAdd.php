@@ -98,7 +98,7 @@ include "SideBar.php";
                                         $myQuery=$db->getRows("SELECT * FROM category");
                                         foreach ($myQuery as $items) {
                                             $number=$items->Category_Id;
-                                            $recordsCategory=$db->getColumn("SELECT COUNT(CategoryName) FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE product.CategoryId=?",array($number));
+                                            $recordsCategory=$db->getColumn("SELECT COUNT(Category_Name) FROM product INNER JOIN category ON product.Category_Id=category.Category_Id WHERE product.Category_Id=?",array($number));
                                         ?>
                                     <tbody>
                                     <tr>
@@ -109,10 +109,10 @@ include "SideBar.php";
                                         <form action="" method="POST">
                                             <select name="category" class="form-control">
                                             <?php
-                                                $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.CategoryId=category.CategoryId WHERE category.CategoryId=?",array($number));
+                                                $subCategory=$db->getRows("SELECT * FROM sub_category INNER JOIN category ON sub_category.Category_Id=category.Category_Id WHERE category.Category_Id=?",array($number));
                                                             foreach ($subCategory as $itemsSubCategory) {                   
                                             ?>
-                                            <option value="<?php echo $itemsSubCategory->Sub_Category_Id;?>"><?php echo $itemsSubCategory->SubCategoryName; ?></option>
+                                            <option value="<?php echo $itemsSubCategory->Sub_Category_Id;?>"><?php echo $itemsSubCategory->Sub_Category_Name; ?></option>
                                             <?php } ?> 
                                             </select>
                                         </form>

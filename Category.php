@@ -63,9 +63,9 @@ $db=new \vivense\db\Database();
                     <?php
                       $myQuery=$db->getRows("SELECT * FROM category");
                         foreach ($myQuery as $items) {
-                        $number=$items->CategoryId;
+                        $number=$items->Category_Id;
                         
-                      $recordsCategory=$db->getColumn("SELECT COUNT(CategoryName) FROM product INNER JOIN category ON product.CategoryId=category.CategoryId WHERE product.CategoryId=?",array($number));
+                      $recordsCategory=$db->getColumn("SELECT COUNT(Category_Name) FROM product INNER JOIN category ON product.Category_Id=category.Category_Id WHERE product.Category_Id=?",array($number));
                     ?>
                   <tbody>
                   <tr>

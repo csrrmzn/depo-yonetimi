@@ -28,10 +28,10 @@ $db=new \vivense\db\Database();
           <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
             <?php 
-              $recordsProdcut=$db->getColumn("SELECT COUNT(ProductId) FROM product");
-              $recordsCategory=$db->getColumn("SELECT COUNT(CategoryId) FROM category");
-              $recordsPPP=$db->getColumn("SELECT SUM(ProductPurchasePrice) FROM product");
-              $recordsPSP=$db->getColumn("SELECT SUM(ProductSellPrice) FROM product");
+              $recordsProdcut=$db->getColumn("SELECT COUNT(Product_Id) FROM product");
+              $recordsCategory=$db->getColumn("SELECT COUNT(Category_Id) FROM category");
+              $recordsPPP=$db->getColumn("SELECT SUM(Product_PurchasePrice) FROM product");
+              $recordsPSP=$db->getColumn("SELECT SUM(Product_SellPrice) FROM product");
               $sum=$recordsPSP-$recordsPPP;
               
             ?>
@@ -107,25 +107,56 @@ $db=new \vivense\db\Database();
                     <div class="card-body">
                       <div class="form-group">
                         <label>Konu</label>
-                        <input type="text" class="form-control" placeholder="Not Konu">
+                        <input type="text" name="notesubject" class="form-control" placeholder="Not Konu">
                       </div>
                       <div class="form-group">
                         <label>Açıklama</label>
-                        <input type="text" class="form-control" placeholder="Not Açıklama">
+                        <input type="text" name="notedescription" class="form-control" placeholder="Not Açıklama">
                       </div>
                     </div>
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-success">Ekle</button>
+                      <button type="submit" name="addnote" class="btn btn-success">Ekle</button>
                     </div>
                   </form>
                 </div>
               <?php } ?>
           <div class="row">
+            <div class="col-md-12 text-center">
+              <?php
+                if (isset($_GET) && isset($_GET["confirm"]))
+                {
+                    $confirm=$_GET["confirm"];
+                    switch ($confirm) {
+                      case 'addnote': ?>
+                        <div class="alert alert-success">
+                          Not Eklendi
+                        </div>
+                      <?php break; ?>
+                    <?php case 'notaddnote': ?>
+                        <div class="alert alert-danger">
+                          Not Eklenemedi
+                        </div>
+                      <?php break; ?>
+                    <?php case 'deletenote': ?>
+                        <div class="alert alert-success">
+                          Not Silindi
+                        </div>
+                      <?php break; ?>
+                    <?php case 'notdeletenote': ?>
+                        <div class="alert alert-danger">
+                          Not Silinemedi
+                        </div>
+                      <?php break;
+                    }
+                }   
+              ?>
+            </div>
+          </div>
+          <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Notlar</h3>
-
                 <div class="card-tools">
                   <a href="Home.php?see=success"><button class="btn btn-success">Yeni Not Ekle</button></a>
                 </div>
@@ -133,6 +164,7 @@ $db=new \vivense\db\Database();
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
+                  
                   <thead>
                     <tr>
                       <th></th>
@@ -143,16 +175,22 @@ $db=new \vivense\db\Database();
                       <th>Notu Sil</th>
                     </tr>
                   </thead>
+                  <?php
+                    $notes=$db->getRows("SELECT * FROM notes INNER JOIN users ON
+                                    notes.User_Id=users.User_Id");
+                          foreach ($notes as $item) {
+                  ?>
                   <tbody>
                     <tr>
                       <td><i class="fas fa-check-circle"></i></td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                      <td><a href="operation/Operation.php"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                      <td><?=$item->User_Name;?></td>
+                      <td><?=$item->Note_AddTime;?></td>
+                      <td><span class="tag tag-success"><?=$item->Note_Subject;?></span></td>
+                      <td><?=$item->Note_Description;?></td>
+                      <td><a href="operation/Operation.php?noteıd=<?=$item->Note_Uniqid;?>"><button class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
                     </tr>
                   </tbody>
+                  <?php } ?>
                 </table>
               </div>
               <!-- /.card-body -->

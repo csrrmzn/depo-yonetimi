@@ -11,7 +11,7 @@ if (isset($_GET['UserId']))
     $userıd=security($_GET["UserId"]);
 
         $deleteMyAccount=$db->Delete('DELETE FROM users WHERE
-                            UserId=?',
+                            User_Id=?',
                             array($userıd));
         if ($deleteMyAccount==true) {
             go("../../Login.php?confirm=deletemyaccount");
